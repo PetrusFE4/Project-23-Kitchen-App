@@ -1,0 +1,233 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffffd6;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+  }
+  
+  .navbar-logo img {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .navbar-logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    padding-left: 500px;
+  
+  }
+  
+  .navbar-links li {
+    margin: 0 10px;
+  }
+  
+  .navbar-links a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .navbar-links a.active,
+  .navbar-links a:hover {
+    color: #f8b400;
+  }
+  
+  .navbar-auth {
+    display: flex;
+    align-items: center;
+    padding-right: 250px;
+  }
+  
+  .login-button,
+  .signup-button {
+    background-color: #fff;
+    border: 1px solid #333;
+    padding: 5px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .signup-button {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .login-button:hover,
+  .signup-button:hover {
+    background-color: #f8b400;
+    color: #fff;
+
+  }
+
+  /* HOME CSS */
+
+  body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.home {
+  padding: 20px;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.home-header h1 {
+  font-size: 2.5em;
+  color: #f8b400;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.home-header p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-button {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #81c9f3, #8c4fcf);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+.explore-button span {
+  margin-right: 10px;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  position: absolute;
+  right: 10px;
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.recipe-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.recipe-section h2 {
+  font-size: 2em;
+  color: #333;
+  margin: 0;
+  padding-left: 180px;
+}
+
+.recipe-section p {
+  font-size: 1.2em;
+  color: #555;
+  margin: 0;
+  padding-left: 180px;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding-right: 180px;
+}
+
+.filter-button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.filter-button.active,
+.filter-button:hover {
+  background-color: #f8b400;
+  color: #fff;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    
+}
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1500px;
+  padding: 20px;
+}
+
+.recipe-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+ 
+}
+
+.recipe-card img {
+    width: 100%;
+    height: auto;
+}
+
+.recipe-card h3 {
+  font-size: 1.2em;
+  color: #333;
+  margin: 10px 0;
+}
+
+.details-button {
+  background-color: #f8b400;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  margin-bottom: 10px;
+}

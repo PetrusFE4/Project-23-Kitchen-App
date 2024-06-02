@@ -1,9 +1,19 @@
+//import Home from "./components/Home"
+// import Login from "./components/Login"
+import Home from "./components/Home"
+import Navbar from "./components/Navbar"
+//import Signup from "./components/Signup"
+
+
+
 function App() {
 
   return (
-    <>
-      <div className="App">HEllo world</div>
-    </>
+    <di className="App">
+      <Navbar/>
+      <Home/>
+
+    </di>
   )
 }
 
