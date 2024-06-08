@@ -1,0 +1,298 @@
+
+  /* HOME CSS */
+  body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.home {
+  padding-top: 25px;
+ /* padding: 20px; */
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.home-header h1 {
+  font-size: 2.5em;
+  color: #f8b400;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.home-header p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-button {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #81c9f3, #8c4fcf);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+.explore-button span {
+  margin-right: 10px;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  position: absolute;
+  right: 10px;
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.recipe-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+
+.recipe-section h3 {
+  font-size: 2em;
+  color: #333;
+  margin: 0;
+  font-weight: bold;
+}
+
+.recipe-section p {
+  font-size: 1.2em;
+  color: #000000;
+  margin: 0;
+  font-weight: 200;
+ 
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding-right: 100px;
+ 
+}
+
+.filter-button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 10px 20px;
+}
+
+.filter-button.active,
+.filter-button:hover {
+  background-color: #f8b400;
+  color: #fff;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    
+}
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 10px;
+}
+
+.recipe-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+ 
+}
+
+.recipe-card img {
+    width: 100%;
+    height: auto;
+}
+
+.recipe-card h3 {
+  font-size: 1.2em;
+  color: #333;
+  margin: 10px 0;
+}
+
+.details-button {
+  background-color: #ff1010;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.col {
+  padding-left: 100px;
+
+}
+
+
+/* Body.css */
+.body-section {
+  background-color: #f8b400;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  display: flex;
+  padding-top: 20px;
+  margin-top: 20px;
+
+}
+.body-section h1 {
+  font-weight: bold;
+  align-items: center;
+}
+
+.food-images img {
+  width: 170px;
+  height: 190px;
+  border-radius: 8px;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .food-images img {
+    max-width: 200px;
+    align-items: center;
+    
+  }
+}
+
+@media (min-width: 800px) {
+  .body-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 150px;
+    
+  }
+}
+/* .resep-Aja {
+  background-color: #3D447A;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.resep-container {
+  max-width: 900px;
+  padding-right: 100px;
+}
+
+.resep-title {
+  font-weight: bold;
+  color: #f8b400;
+  text-align: center;
+  align-items: center;
+}
+.resep-main {
+  color: #000000;
+  font-weight: 400;
+  text-align: center;
+  align-items: center;
+}
+
+.resep-dots .dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  align-items: center;
+}
+
+.resep-dots {
+  display: flex;
+  justify-content: center;
+}
+
+.photos1{
+  align-items: center;
+  padding-left: 70px;
+} */
+
+
+.section-info{
+  background-color: #3D447A;
+  height: auto;
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+
+}
+.container  {
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  text-align: justify;
+}
+.resep-dots .dot {
+  margin: 0 5px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  align-items: center;
+}
+.row h6 {
+  justify-content: center;
+  margin: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-family: sans-serif;
+  color: #ffffff;
+}
+.row h2 {
+  color: #f8b400;
+  padding-left: 50px;
+  text-align: center;
+  font-family: 'Segoe UI';
+  font-weight: bold;
+
+}
+.col-3 img {
+  width: 100%;
+  height: auto;
+}
