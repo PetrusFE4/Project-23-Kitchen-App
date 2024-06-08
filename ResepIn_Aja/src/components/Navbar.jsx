@@ -21,7 +21,7 @@ const Navbar = () => {
     </ul>
     <div className="navbar-auth">
       <button className="login-button" onClick={() => navigate ('/Login')}>Login</button>
-      <button className="signup-button">Sign Up</button>
+      <button className="signup-button" onClick={() => navigate ('/Signup')}>Sign Up</button>
     </div>
   </nav>
   );

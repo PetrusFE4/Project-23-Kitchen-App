@@ -1,6 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import { useNavigate } from "react-router-dom"
+
 const Login = () => {
+  const Navigate = useNavigate()
   return (
     <div>
       <div className="container d-flex justify-content-center align-items-center min-vh-100">
@@ -38,13 +41,13 @@ const Login = () => {
               </div>
             </div>
             <div className="input-group mb-3">
-              <button className="btn text-white btn-lg w-100 fs-6"style={{ background: '#3D447A' }} >Login</button>
+              <button className="btn text-white btn-lg w-100 fs-6"style={{ background: '#3D447A' }} onClick={() => Navigate ('/Home')} >Login</button>
             </div>
             <div className="input-group mb-3">
               <button className="btn btn-lg btn-light w-100 fs-6"><img src="/src/assets/google.png" style={{ width: '20px' }} className="me-2" alt="Google" /><small>Sign In with Google</small></button>
             </div>
             <div className="row" >
-              <p className="text-bold text-center" > Don't have account?<a href=""> Sign Up </a></p>
+              <p className="text-bold text-center" > Don't have account?<a className="link-up" onClick={() => Navigate ('/Signup')}> Sign Up </a></p>
             </div>
           </div>
         </div>

@@ -18,6 +18,9 @@ body{
 .rounded-4{
     border-radius: 20px;
 }
+.btn {
+    padding-top: 10px;
+}
 .rounded-5{
     border-radius: 30px;
 }
