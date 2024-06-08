@@ -5,6 +5,7 @@ import './styles/home.css'
 import './styles/navbar.css'
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
