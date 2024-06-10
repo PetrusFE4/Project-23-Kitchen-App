@@ -1,0 +1,52 @@
+html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  .column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
+  
+  .about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #3D447A;
+    color: white;
+  }
+  .title {
+    color: grey;
+  }
+  
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
+.btn {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: #F6BE2C;
+}
+.card-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.text-team {
+    padding-top: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
