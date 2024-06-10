@@ -1,0 +1,29 @@
+.title-text {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 20px;
+    color: #3D447A;
+}
+.input-group {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.btn {
+    color: rgb(215, 0, 0);
+}
+
+.btn-group button {
+    border-color: #3D447A;
+    border-style: solid;
+    
+}
+.section-right {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 100px;
+  }
+  
+  .btn-group {
+    margin-left: auto;
+  }

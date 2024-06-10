@@ -1,11 +1,13 @@
-
 // import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from "./components/Home"
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
-import Login from './components/Login'
-import Signup from './components/Signup'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import UploadResep from "./components/UploadResep";
+import AboutUs from "./components/AboutUs";
+
 // import Login from "./components/Login";
 //import Signup from "./components/Signup"
 
@@ -14,38 +16,38 @@ import Signup from './components/Signup'
 // import Footer from "./pages/Footer"
 
 /* IMPORT CSSS */
-import './styles/navbar.css';
-import './styles/home.css';
-import './styles/footer.css';
-import './styles/login.css';
-import './styles/signup.css';
+import "./styles/navbar.css";
+import "./styles/home.css";
+import "./styles/footer.css";
+import "./styles/login.css";
+import "./styles/signup.css";
+import "./styles/uploadresep.css";
+import "./styles/aboutus.css";
 
 const App = () => {
   return (
-   
     <Router>
       <div>
-      <Navbar/>
+        <Navbar />
         <Routes>
-        {/* <Route path="/Navbar" element={ } /> */}
-        <Route path="/" element={<Home/>}/>
-        <Route path="/Home" element={<Home/>} />
-        <Route path="/Footers" element={ <Footer />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Signup" element={<Signup/>} />
+          {/* <Route path="/Navbar" element={ } /> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Footers" element={<Footer />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/UploadResep" element={<UploadResep />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
         </Routes>
         <Footer />
       </div>
     </Router>
-  )
-  }
-  export default App
+  );
+};
+export default App;
 
-
-  
-
-
- {/* function App() {
+{
+  /* function App() {
 
   return (
     <div className="App">
@@ -66,4 +68,5 @@ const App = () => {
   )
 }
 
-export default App */}
+export default App */
+}
