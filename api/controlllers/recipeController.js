@@ -8,7 +8,7 @@ function create(req, res){
         instruksi: req.body.instruksi,
         kategori: req.body.kategori,
         subKategori: req.body.subKategori,
-        userId: 1
+        userId: req.body.userId
     }
     
     models.resep.create(resep).then(result=>{
@@ -66,7 +66,7 @@ function update(req,res){
         instruksi: req.body.instruksi,
         kategori: req.body.kategori,
         subKategori: req.body.subKategori,
-        userId: 1
+        userId: req.body.userId
     }
 
     models.resep.update(resepUpdate, {where: {id:id, userId:resepUpdate.userId}}).then(result => {
@@ -90,7 +90,7 @@ function update(req,res){
 
 function destroy(req,res){
     const id = req.params.id
-    const userId = 1;
+    const userId = req.params.userId;
 
     models.resep.destroy(resepUpdate, {where: {id:id, userId:resepUpdate.userId}}).then(result => {
         res.status(200).json({
@@ -108,5 +108,7 @@ function destroy(req,res){
 module.exports ={
     create:create,
     getOne:getOne,
-    getAll:getAll
+    getAll:getAll,
+    update:update,
+    destroy:destroy,
 }
