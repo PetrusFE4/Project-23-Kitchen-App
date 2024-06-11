@@ -1,0 +1,60 @@
+.recipe-detail-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.recipe-header {
+  margin-bottom: 20px;
+}
+
+.recipe-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.recipe-content {
+  margin-bottom: 20px;
+}
+
+.recipe-video video {
+  width: 950px; /* Ubah lebar video */
+  display: block;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+
+.recipe-image img {
+  width: 400px;
+  height: auto;
+}
+
+.recipe-description h2,
+.recipe-details h2,
+.recipe-steps h2 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 0;
+}
+
+.recipe-description p,
+.recipe-details ul,
+.recipe-steps ol {
+  font-size: 16px;
+  color: #555;
+}
+
+.recipe-details ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+.recipe-details ul li {
+  margin-bottom: 5px;
+}
+
+.recipe-steps ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+}

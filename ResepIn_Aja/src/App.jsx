@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import UploadResep from "./components/UploadResep";
 import AboutUs from "./components/AboutUs";
+import RecipeDetail from "./components/RecipeDetail";
 
 // import Login from "./components/Login";
 //import Signup from "./components/Signup"
@@ -23,6 +24,7 @@ import "./styles/login.css";
 import "./styles/signup.css";
 import "./styles/uploadresep.css";
 import "./styles/aboutus.css";
+import "./styles/RecipeDetail.css"
 
 const App = () => {
   return (
@@ -38,6 +40,7 @@ const App = () => {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/UploadResep" element={<UploadResep />} />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/recipe/:id" element={<RecipeDetail />} /> {/* Tambahkan rute untuk RecipeDetail */}
         </Routes>
         <Footer />
       </div>
