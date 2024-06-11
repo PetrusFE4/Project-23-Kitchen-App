@@ -65,11 +65,10 @@ function update(req,res){
         bahan: req.body.bahan,
         instruksi: req.body.instruksi,
         kategori: req.body.kategori,
-        subKategori: req.body.subKategori,
-        userId: req.body.userId
+        subKategori: req.body.subKategori
     }
 
-    models.resep.update(resepUpdate, {where: {id:id, userId:resepUpdate.userId}}).then(result => {
+    models.resep.update(resepUpdate, {where: {id:id}}).then(result => {
         if(result){
             res.status(200).json({
                 message: "resep Updated",
@@ -88,21 +87,21 @@ function update(req,res){
 
 }
 
-function destroy(req,res){
-    const id = req.params.id
-    const userId = req.params.userId;
+function destroy(req, res) {
+    const id = req.params.id;
 
-    models.resep.destroy(resepUpdate, {where: {id:id, userId:resepUpdate.userId}}).then(result => {
-        res.status(200).json({
-            message: "resep deleted",
-            resep:result
-        });
-    }).catch(error=>{
-        res.status(500).json({
-            message:"something wrong!"
+    models.resep.destroy({ where: { id: id } })
+        .then(result => {
+            res.status(200).json({
+                message: "resep deleted",
+                resep: result
+            });
         })
-    })
-
+        .catch(error => {
+            res.status(500).json({
+                message: "something wrong!"
+            });
+        });
 }
 
 module.exports ={

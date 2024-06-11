@@ -14,10 +14,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   daftarBelanja.init({
     userId: DataTypes.INTEGER,
-    content: DataTypes.STRING
+    content: DataTypes.TEXT('long')
   }, {
     sequelize,
     modelName: 'daftarBelanja',
   });
   return daftarBelanja;
 };
+

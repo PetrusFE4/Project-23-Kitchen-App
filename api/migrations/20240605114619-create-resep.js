@@ -24,10 +24,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       bahan: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT('long')
       },
       instruksi: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT('long')
       },
       video: {
         type: Sequelize.STRING

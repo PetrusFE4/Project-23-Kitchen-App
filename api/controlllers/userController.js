@@ -8,13 +8,13 @@ const jwt = require('jsonwebtoken');
 
 function register(req, res){
     const user = {
-        username: req.res.username,
-        email: req.res.email,
-        password: req.res.password
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
     }
 
-    models.User.create(user).then(result => {
-        res.status(201).jsonc({
+    models.user.create(user).then(result => {
+        res.status(200).json({
             message: "User berhasil ditambahkan"
         });
     }).catch(error => {
@@ -26,5 +26,5 @@ function register(req, res){
 
 
 module.exports ={
-    register
+    register:register
 }
