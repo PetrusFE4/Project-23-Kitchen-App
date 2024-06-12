@@ -27,7 +27,7 @@ function update(req,res){
         if(result){
             res.status(200).json({
                 message: "daftar Updated",
-                daftarBelanja:result
+                daftarBelanja:daftarbelanjaUpdate
             });
         }else{
             res.status(404).json({
