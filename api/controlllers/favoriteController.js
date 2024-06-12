@@ -1,66 +1,65 @@
-const db = require('../models');
+'use strict';
+const { favorite, resep, user } = require('../models');
 
-const Favorite = db.favorite;
-const User = db.user;
+// Get favorites of a specific user
+const getFavoritesByUser = async (req, res) => {
+  const { userId } = req.params;
 
-function getFavoritesByUserId (req, res){
-    const userId = req.params.userId;
-    try {
-        
-        const favorites = await Favorite.findAll({
-            where: { userId: userId },
-            include: [{
-                model: db.resep,
-                as: 'reseps'
-            }]
-        });
-        res.status(200).json({ favorites });
-    } catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
+  try {
+    const userFavorites = await favorite.findAll({
+      where: { userId },
+      include: [
+        {
+          model: resep,
+          as: 'resep'
+        }
+      ]
+    });
+
+    if (!userFavorites) {
+      return res.status(404).json({ message: 'Favorites not found for this user' });
     }
+
+    res.status(200).json(userFavorites);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
-function addFavorite(req, res){
-    const userId = req.params.userId;
-    const resepId = req.body.resepId;
-    
-         // Assuming resepId is sent in the request body
+// Add a recipe to user's favorites
+const addRecipeToFavorites = async (req, res) => {
+  const { userId, resepId } = req.body;
 
-        // Check if the user exists
-        const user = await User.findByPk(userId);
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        // Create a new favorite entry
-        const newFavorite = await Favorite.create({
-            userId: userId,
-            resepId: resepId
-        });
-
-        res.status(201).json({ message: 'Recipe added to favorites', favorite: newFavorite });
-     catch (error) {
-        res.status(500).json({ message: 'Internal server error' });
-    }
+  try {
+    const newFavorite = await favorite.create({ userId, resepId });
+    res.status(201).json(newFavorite);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
+// Remove a recipe from user's favorites
+const removeRecipeFromFavorites = async (req, res) => {
+  const { userId, resepId } = req.body;
 
-exports.deleteFavorite = async (req, res) => {
-    try {
-        const favoriteId = req.body.favoriteId;
+  try {
+    const favoriteToRemove = await favorite.findOne({
+      where: { userId, resepId }
+    });
 
-        // Check if the favorite entry exists
-        const favorite = await Favorite.findByPk(favoriteId);
-        if (!favorite) {
-            return res.status(404).json({ message: 'Favorite entry not found' });
-        }
-
-        // Delete the favorite entry
-        await favorite.destroy();
-
-        res.status(200).json({ message: 'Favorite entry deleted successfully' });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Internal server error' });
+    if (favoriteToRemove) {
+      await favoriteToRemove.destroy();
+      res.status(200).json({ message: 'Recipe removed from favorites' });
+    } else {
+      res.status(404).json({ message: 'Favorite not found' });
     }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = {
+  getFavoritesByUser,
+  addRecipeToFavorites,
+  removeRecipeFromFavorites
 };

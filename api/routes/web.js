@@ -17,7 +17,7 @@ router.get("/daftarBelanja", daftarbelanjaController.getDaftar);
 router.post("/daftarBelanja/create", daftarbelanjaController.create);
 router.patch("/daftarBelanja/update", daftarbelanjaController.update);
 
-router.get("/favorite/:id", favoriteController.getFavoritesByUserId);
-router.post("/favorite/:id/create", favoriteController.addFavorite);
-router.delete("/favorite/:id/delete", favoriteController.deleteFavorite);
+router.get('/user/:userId/favorites', favoriteController.getFavoritesByUser);
+router.post('/user/favorites', favoriteController.addRecipeToFavorites);
+router.delete('/user/favorites', favoriteController.removeRecipeFromFavorites);
 module.exports = router;

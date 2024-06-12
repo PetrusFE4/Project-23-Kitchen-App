@@ -12,10 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       // favorite belongs to many reseps
-      favorite.belongsToMany(models.resep, {
-        through: 'FavoriteReseps',
-        foreignKey: 'favoriteId',
-        as: 'reseps'
+      favorite.belongsTo(models.resep, {
+        foreignKey: 'resepId',
+        as: 'resep'
       });
     }
   }

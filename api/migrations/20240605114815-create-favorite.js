@@ -11,19 +11,33 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
-          model: 'users',
-          key: 'id'
+          model: 'users', // name of Target model
+          key: 'id', // key in Target model that we're referencing
         },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      resepId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'reseps', // name of Target model
+          key: 'id', // key in Target model that we're referencing
+        },
+        onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },

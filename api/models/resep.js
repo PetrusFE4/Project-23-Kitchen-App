@@ -12,8 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       // resep belongs to many favorites
-      resep.belongsToMany(models.favorite, {
-        through: 'FavoriteReseps',
+      resep.hasMany(models.favorite, {
         foreignKey: 'resepId',
         as: 'favorites'
       });
