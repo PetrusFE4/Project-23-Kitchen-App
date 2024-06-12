@@ -39,6 +39,7 @@ import image3 from "./assets/img/image1.jpg"
         description: "Ini adalah deskripsi untuk Resep Ayam Goreng.",
         ingredients: ["Ayam 1", "Ayam 2", "Ayam 3"],
         steps: ["Langkah A1", "Langkah A2", "Langkah A3"],
+        category: "Ayam"
         },
         {
         id: 5,
@@ -66,6 +67,7 @@ import image3 from "./assets/img/image1.jpg"
         description: "Ini adalah deskripsi untuk Resep Menu Pagi.",
         ingredients: ["Pagi 1", "Pagi 2", "Pagi 3"],
         steps: ["Langkah P1", "Langkah P2", "Langkah P3"],
+        category: "Pagi",
         },
         {
         id: 8,
@@ -75,6 +77,7 @@ import image3 from "./assets/img/image1.jpg"
         description: "Ini adalah deskripsi untuk Resep Menu Malam.",
         ingredients: ["Malam 1", "Malam 2", "Malam 3"],
         steps: ["Langkah M1", "Langkah M2", "Langkah M3"],
+        category: "Malam",
         },
         {
         id: 9,
@@ -84,6 +87,7 @@ import image3 from "./assets/img/image1.jpg"
         description: "Ini adalah deskripsi untuk Resep Menu Sarapan.",
         ingredients: ["Pagi 1", "Pagi 2", "Pagi 3"],
         steps: ["Langkah S1", "Langkah S2", "Langkah S3"],
+        category: "Sarapan",
         },
         {
         id: 10,
@@ -93,6 +97,7 @@ import image3 from "./assets/img/image1.jpg"
         description: "Ini adalah deskripsi untuk Resep Menu Coding.",
         ingredients: ["Coding 1", "Coding 2", "Coding 3"],
         steps: ["Langkah C1", "Langkah C2", "Langkah C3"],
+        
         },
         {
         id: 11,
@@ -102,6 +107,7 @@ import image3 from "./assets/img/image1.jpg"
         description: "Ini adalah deskripsi untuk Resep Menu Coding.",
         ingredients: ["Coding 1", "Coding 2", "Coding 3"],
         steps: ["Langkah C1", "Langkah C2", "Langkah C3"],
+        category: "Coding"
         },
         {
         id: 12,
@@ -111,6 +117,7 @@ import image3 from "./assets/img/image1.jpg"
         description: "Ini adalah deskripsi untuk Resep Menu Coding.",
         ingredients: ["Coding 1", "Coding 2", "Coding 3"],
         steps: ["Langkah C1", "Langkah C2", "Langkah C3"],
+        category: "Coding",
         },
         {
         id: 13,
@@ -120,5 +127,6 @@ import image3 from "./assets/img/image1.jpg"
         description: "Ini adalah deskripsi untuk Resep Menu Coding.",
         ingredients: ["Coding 1", "Coding 2", "Coding 3"],
         steps: ["Langkah C1", "Langkah C2", "Langkah C3"],
+        category: "Coding",
         },
     ];

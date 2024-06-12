@@ -1,34 +1,30 @@
-//import React from 'react';
-//import { useHistory } from 'react-router-dom';
-
-// import React from "react";
-import { useNavigate } from "react-router-dom";
+// Navbar.js
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
+      <div className="navbar-logo" onClick={() => navigate("/Home")}>
         <img src="./src/assets/logo.png" alt="ResepIn Aja Logo" />
         <span>ResepIn Aja</span>
       </div>
       <ul className="navbar-links">
         <li>
-          <a onClick={() => navigate("/Home")} className="active">
-            Home
-          </a>
+          <Link to="/Home">Home</Link>
         </li>
         <li>
           <a onClick={() => navigate("/Resep")}>Resep</a>
         </li>
         <li>
-          <a href="#categories">Categories</a>
+          <Link to="/Kategori">Categories</Link> {/* Link to category page */}
         </li>
         <li>
-          <a onClick={() => navigate("/UploadResep")}>Upload Resep Mu</a>
+          <Link to="/UploadResep">Upload Resep Mu</Link>
         </li>
         <li>
-          <a onClick={() => navigate("/AboutUs")}>About us</a>
+          <Link to="/AboutUs">About us</Link>
         </li>
       </ul>
       <div className="navbar-auth">
@@ -42,4 +38,5 @@ const Navbar = () => {
     </nav>
   );
 };
+
 export default Navbar;

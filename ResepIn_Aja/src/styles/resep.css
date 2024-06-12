@@ -1,10 +1,43 @@
-.search_container{
+.search-container {
     display: flex;
     justify-content: center;
-    
-}
-
-.searchbar {
+    margin-bottom: 20px;
+  }
+  
+  .searchbar {
+    margin: 30px;
+    width: 100%;
+    max-width: 600px;
     display: flex;
     justify-content: center;
-}
+  }
+  
+  .resep .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+  
+  .resep .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .resep .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .resep .card-body {
+    padding: 15px;
+  }
+  
+  .resep .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+  
+  .resep .card-text {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  

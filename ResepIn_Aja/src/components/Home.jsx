@@ -1,22 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const recipeData = [
-  { id: 1, image: "/src/assets/img/image1.jpg", title: "Masakan Hari Raya" },
-  { id: 2, image: "/src/assets/img/image2.jpg", title: "Masakan Tradisional" },
-  { id: 3, image: "/src/assets/img/image3.jpg", title: "Resep Daging" },
-  { id: 4, image: "/src/assets/img/image1.jpg", title: "Resep Ayam Goreng" },
-  { id: 5, image: "/src/assets/img/image1.jpg", title: "Resep Sayuran" },
-  { id: 6, image: "/src/assets/img/image1.jpg", title: "Resep Seafood" },
-  { id: 7, image: "/src/assets/img/image1.jpg", title: "Resep Menu Pagi" },
-  { id: 8, image: "/src/assets/img/image1.jpg", title: "Resep Menu Malam" },
-];
-
 const Home = () => {
   return (
     <div className="home">
       <header className="home-header">
-        <h1>Segala Jenis Resep Makanan Ada di sini Semuanya...</h1>
+        <h1>Segala Jenis Resep Makanan Ada disini Semuanya...</h1>
         <p>
           Inilah tempatnya segala resep masakan enak! ResepIn Aja telah sajikan
           <br />
@@ -51,6 +40,7 @@ const Home = () => {
           ))}
         </div>
       </div>
+
       <section className="body-section">
         <div className="container py-4">
           <div className="row align-items-center p-3">
@@ -71,7 +61,7 @@ const Home = () => {
       <section>
         <div className="section-info d-flex align-items-center">
           <div className="container">
-            <div className="row align-items-center justify-content-center p-3 rounded">
+            <div className="row align-items-center justify-content-center p-3 rounded ">
               <div className="col-md-6 d-flex align-items-center justify-content-center">
                 <h6>
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis recusandae quisquam sed sint id, possimus nihil modi voluptatibus provident a voluptatem quos cumque et quas quis, deleniti odit iste ipsa? ipsum dolor sit
@@ -79,11 +69,13 @@ const Home = () => {
                 </h6>
               </div>
               <div className="col-3">
-                <h2>Resep In Aja Itu Apa Siiiihhh?</h2>
+                <h2>Resep In Aja Itu Apa Siiiihhh ?</h2>
                 <div className="resep-dots mt-3">
                   <span className="dot"></span>
                   <span className="dot"></span>
                   <span className="dot"></span>
+
+                  
                 </div>
               </div>
               <div className="col-3 mt-20">
@@ -96,5 +88,16 @@ const Home = () => {
     </div>
   );
 };
+
+const recipeData = [
+  { id: 1, image: "/src/assets/img/image1.jpg", title: "Masakan Hari Raya" },
+  { id: 2, image: "/src/assets/img/image1.jpg", title: "Masakan Tradisional" },
+  { id: 3, image: "/src/assets/img/image1.jpg", title: "Resep Daging" },
+  { id: 4, image: "/src/assets/img/image1.jpg", title: "Resep Ayam Goreng" },
+  { id: 5, image: "/src/assets/img/image1.jpg", title: "Resep Sayuran" },
+  { id: 6, image: "/src/assets/img/image1.jpg", title: "Resep Seafood" },
+  { id: 7, image: "/src/assets/img/image1.jpg", title: "Resep Menu Pagi" },
+  { id: 8, image: "/src/assets/img/image1.jpg", title: "Resep Menu Malam" },
+];
 
 export default Home;

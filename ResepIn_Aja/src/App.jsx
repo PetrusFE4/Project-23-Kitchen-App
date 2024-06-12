@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
@@ -9,13 +9,7 @@ import UploadResep from "./components/UploadResep";
 import AboutUs from "./components/AboutUs";
 import RecipeDetail from "./components/RecipeDetail";
 import Resep from "./components/Resep";
-
-// import Login from "./components/Login";
-//import Signup from "./components/Signup"
-
-// import Home from "./pages/Home"
-// import Navbar from "./pages/Navbar"
-// import Footer from "./pages/Footer"
+import Kategori from "./components/Kategori"; // Ubah nama impor menjadi Kategori
 
 /* IMPORT CSSS */
 import "./styles/navbar.css";
@@ -27,6 +21,7 @@ import "./styles/uploadresep.css";
 import "./styles/aboutus.css";
 import "./styles/RecipeDetail.css"
 import "./styles/resep.css"
+import "./styles/Kategori.css" // Ubah nama impor menjadi Kategori.css
 
 
 const App = () => {
@@ -35,7 +30,6 @@ const App = () => {
       <div>
         <Navbar />
         <Routes>
-          {/* <Route path="/Navbar" element={ } /> */}
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/Footers" element={<Footer />} />
@@ -44,7 +38,8 @@ const App = () => {
           <Route path="/Resep" element={<Resep/>} />
           <Route path="/UploadResep" element={<UploadResep />} />
           <Route path="/AboutUs" element={<AboutUs />} />
-          <Route path="/recipe/:id" element={<RecipeDetail />} /> {/* Tambahkan rute untuk RecipeDetail */}
+          <Route path="/recipe/:id" element={<RecipeDetail />} />
+          <Route path="/Kategori" element={<Kategori />} /> {/* Ubah route untuk menggunakan Kategori */}
         </Routes>
         <Footer />
       </div>
@@ -52,28 +47,3 @@ const App = () => {
   );
 };
 export default App;
-
-{
-  /* function App() {
-
-  return (
-    <div className="App">
-      <Navbar/>
-      <Home/>
-      <Footer />
-      <Router>
-        <Routes>
-          <Route path='/' element={<Navbar/>}>
-          <Route path='/' element={<Home/>}>
-          <Route path='/' element={<Footer/>}>
-          <Route path='/Login' element={<Login/>}>
-          </Route>
-        </Routes>
-      </Router>
-
-    </div>
-  )
-}
-
-export default App */
-}
