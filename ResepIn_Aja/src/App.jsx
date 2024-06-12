@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
@@ -9,6 +8,7 @@ import UploadResep from "./components/UploadResep";
 import AboutUs from "./components/AboutUs";
 import RecipeDetail from "./components/RecipeDetail";
 import Resep from "./components/Resep";
+import Kategori from "./components/Kategori";
 
 // import Login from "./components/Login";
 //import Signup from "./components/Signup"
@@ -27,6 +27,7 @@ import "./styles/uploadresep.css";
 import "./styles/aboutus.css";
 import "./styles/RecipeDetail.css";
 import "./styles/resep.css";
+import "./styles/Kategori.css";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/UploadResep" element={<UploadResep />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/recipe/:id" element={<RecipeDetail />} />{" "}
+          <Route path="/Kategori" element={<Kategori />} />{" "}
           {/* Tambahkan rute untuk RecipeDetail */}
         </Routes>
         <Footer />

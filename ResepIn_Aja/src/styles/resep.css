@@ -1,13 +1,16 @@
 .search_container{
     display: flex;
     justify-content: center;
+  
     
 }
 
 .searchbar {
     display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
   }
-  
   .resep .card {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: 0.3s;

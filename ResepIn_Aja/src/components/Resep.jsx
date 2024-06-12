@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { resepData } from '../Data';
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { resepData } from "../Data";
 import "../styles/resep.css";
 
 const Resep = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const selectedCategory = params.get('kategori');
+  const selectedCategory = params.get("kategori");
 
-  const filteredResep = resepData.filter(resep => 
-    (!selectedCategory || resep.category === selectedCategory) && 
-    resep.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredResep = resepData.filter(
+    (resep) =>
+      (!selectedCategory || resep.category === selectedCategory) &&
+      resep.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
