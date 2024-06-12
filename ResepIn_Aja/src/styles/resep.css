@@ -1,15 +1,11 @@
-.search-container {
+.search_container{
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .searchbar {
-    margin: 30px;
-    width: 100%;
-    max-width: 600px;
+    
+}
+
+.searchbar {
     display: flex;
-    justify-content: center;
   }
   
   .resep .card {

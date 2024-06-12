@@ -14,7 +14,7 @@ const UploadResep = () => {
           <button
             className="btn"
             style={{ background: "#F6BE2C" }}
-            onClick={() => Navigate("/")}
+            onClick={() => Navigate("/FormResep")}
           >
             {" "}
             Upload Resep Kamu

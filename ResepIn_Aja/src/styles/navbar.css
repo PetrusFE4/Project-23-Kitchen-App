@@ -42,13 +42,13 @@
     text-decoration: none;
     font-size: 16px;
     color: #333;
+    cursor: pointer;
   }
   
   .navbar-links a.active,
-  .navbar-links a:hover {
+  .navbar-links :hover {
     color: #f8b400;
   }
-  
   .navbar-auth {
     display: flex;
     align-items: center;

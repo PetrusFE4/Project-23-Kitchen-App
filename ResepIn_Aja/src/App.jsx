@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
@@ -9,7 +9,13 @@ import UploadResep from "./components/UploadResep";
 import AboutUs from "./components/AboutUs";
 import RecipeDetail from "./components/RecipeDetail";
 import Resep from "./components/Resep";
-import Kategori from "./components/Kategori"; // Ubah nama impor menjadi Kategori
+
+// import Login from "./components/Login";
+//import Signup from "./components/Signup"
+
+// import Home from "./pages/Home"
+// import Navbar from "./pages/Navbar"
+// import Footer from "./pages/Footer"
 
 /* IMPORT CSSS */
 import "./styles/navbar.css";
@@ -19,10 +25,8 @@ import "./styles/login.css";
 import "./styles/signup.css";
 import "./styles/uploadresep.css";
 import "./styles/aboutus.css";
-import "./styles/RecipeDetail.css"
-import "./styles/resep.css"
-import "./styles/Kategori.css" // Ubah nama impor menjadi Kategori.css
-
+import "./styles/RecipeDetail.css";
+import "./styles/resep.css";
 
 const App = () => {
   return (
@@ -35,11 +39,11 @@ const App = () => {
           <Route path="/Footers" element={<Footer />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
-          <Route path="/Resep" element={<Resep/>} />
+          <Route path="/Resep" element={<Resep />} />
           <Route path="/UploadResep" element={<UploadResep />} />
           <Route path="/AboutUs" element={<AboutUs />} />
-          <Route path="/recipe/:id" element={<RecipeDetail />} />
-          <Route path="/Kategori" element={<Kategori />} /> {/* Ubah route untuk menggunakan Kategori */}
+          <Route path="/recipe/:id" element={<RecipeDetail />} />{" "}
+          {/* Tambahkan rute untuk RecipeDetail */}
         </Routes>
         <Footer />
       </div>

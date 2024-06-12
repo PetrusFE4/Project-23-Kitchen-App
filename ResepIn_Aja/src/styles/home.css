@@ -119,6 +119,7 @@
 .container {
     display: flex;
     justify-content: center;
+
     
 }
 .recipe-grid {
@@ -136,6 +137,7 @@
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
+  padding-bottom: 30px;
  
 }
 
@@ -153,13 +155,12 @@
 .details-button {
   background-color: #ff1010;
   border: none;
-  padding: 10px 20px;
+  padding: 8px 15px;
   color: #fff;
   font-size: 1em;
   cursor: pointer;
-  margin-bottom: 10px;
+  border-radius: 5px;
 }
-
 .col {
   padding-left: 100px;
 

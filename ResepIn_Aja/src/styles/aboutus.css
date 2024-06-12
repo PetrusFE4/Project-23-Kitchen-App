@@ -50,3 +50,6 @@ html {
     font-weight: bold;
     font-family: sans-serif;
 }
+.text-resep {
+  cursor: pointer;
+}

@@ -1,4 +1,9 @@
+/* eslint-disable no-const-assign */
+/* eslint-disable no-unused-vars */
+import { useNavigate } from "react-router-dom";
+
 const AboutUs = () => {
+  const Navigate = useNavigate();
   return (
     <>
       <div className="about-section">
@@ -7,10 +12,17 @@ const AboutUs = () => {
           Kami adalah Team Developer ResepIn_Aja
         </h4>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-          consequuntur amet magni a dicta repudiandae consectetur laborum
-          necessitatibus provident. Maiores voluptatem culpa aliquid quis
-          inventore laudantium magnam, ipsam at ab.
+          <a
+            className="text-resep text-warning"
+            onClick={() => Navigate("/Home")}
+          >
+            ResepIn_Aja
+          </a>{" "}
+          adalah sebuah platform yang menyediakan cara atau bahan apa aja yang
+          di butuhkan untuk memasak sebuah masakan yang enak dan lezat sehingga
+          mempermudahkan ibu rumah tangga yang akan masak makanan untuk keluarga
+          namun bingung bahan masakan nya apa aja. Nahhhh, ResepIn_Aja hadir
+          sebagai solusi permasalahan tersebut.
         </p>
       </div>
       <h2 className="text-team text-center"> THIS IS OUR TEAM ....</h2>
