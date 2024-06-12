@@ -8,6 +8,7 @@ import Signup from "./components/Signup";
 import UploadResep from "./components/UploadResep";
 import AboutUs from "./components/AboutUs";
 import RecipeDetail from "./components/RecipeDetail";
+import Resep from "./components/Resep";
 
 // import Login from "./components/Login";
 //import Signup from "./components/Signup"
@@ -25,6 +26,8 @@ import "./styles/signup.css";
 import "./styles/uploadresep.css";
 import "./styles/aboutus.css";
 import "./styles/RecipeDetail.css"
+import "./styles/resep.css"
+
 
 const App = () => {
   return (
@@ -38,6 +41,7 @@ const App = () => {
           <Route path="/Footers" element={<Footer />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
+          <Route path="/Resep" element={<Resep/>} />
           <Route path="/UploadResep" element={<UploadResep />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/recipe/:id" element={<RecipeDetail />} /> {/* Tambahkan rute untuk RecipeDetail */}

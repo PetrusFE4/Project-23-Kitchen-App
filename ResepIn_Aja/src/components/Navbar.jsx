@@ -19,7 +19,7 @@ const Navbar = () => {
           </a>
         </li>
         <li>
-          <a href="#resep">Resep</a>
+          <a onClick={() => navigate("/Resep")}>Resep</a>
         </li>
         <li>
           <a href="#categories">Categories</a>

@@ -1,0 +1,10 @@
+.search_container{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.searchbar {
+    display: flex;
+    justify-content: center;
+}
