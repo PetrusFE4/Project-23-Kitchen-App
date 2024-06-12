@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post("/resep/create", recipeController.create);
 router.post("/register", userController.register);
+router.post("/login", userController.login);
 router.get("/resep/:id", recipeController.getOne);
 router.get("/resep", recipeController.getAll);
 router.patch("/resep/:id/update", recipeController.update);
