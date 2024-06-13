@@ -28,26 +28,38 @@
 .recipe-image img {
   width: 400px;
   height: auto;
+  margin-left: 100px;
+}
+
+.recipe-details h2 {
+  font-size: 24px;
+  color: #333;
+  margin-top: 0;
+  margin-left: 200px;
+  margin-top: 40px;
 }
 
 .recipe-description h2,
-.recipe-details h2,
 .recipe-steps h2 {
   font-size: 24px;
   color: #333;
   margin-top: 0;
 }
 
+.recipe-details ul {
+  margin-left: 45px;
+  color: #b34e4e;
+}
 .recipe-description p,
-.recipe-details ul,
 .recipe-steps ol {
   font-size: 16px;
-  color: #555;
+  color: #b34e4e;
+  margin-top: 10px;
 }
 
 .recipe-details ul {
   list-style: none;
-  padding-left: 20px;
+  padding-left: 200px;
 }
 
 .recipe-details ul li {
