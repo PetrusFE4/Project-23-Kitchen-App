@@ -7,6 +7,7 @@ const app = express();
 const route = require('./routes/web');
 app.use(bodyParser.json());
 app.use('/', route);
+app.use('/uploads', express.static('uploads'));
 
 // app.use('/user', userRoute);
 module.exports = app;

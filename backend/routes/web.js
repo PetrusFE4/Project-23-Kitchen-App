@@ -27,5 +27,6 @@ router.delete('/user/favorites', checkAuthMiddleware.checkAuth, favoriteControll
 //router.post('/upload', checkAuthMiddleware.checkAuth, imageUploader.upload.single('image'), imageController.upload)
 router.post('/upload', upload.single('image'), imageController.uploadImage);//buat upload image
 
+//http://127.0.0.1:8888/uploads/<namafile> buat nanti dimasukin ke bagian gambar resep waktu nge post resep pas udh nge upload gambar
 
 module.exports = router;
