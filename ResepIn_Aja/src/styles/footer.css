@@ -22,7 +22,7 @@
     margin-top: 20px;
   }
   .footer .col-md-4 {
-    padding-right: 100px;
+    padding-right: 10px;
   }
   
   .footer .fab {
@@ -30,7 +30,8 @@
   }
   
   .footer .col-md-4 img {
-  align-items: center;
+    align-items: center;
+    height: auto;
   }
 
   
