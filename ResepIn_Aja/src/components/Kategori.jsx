@@ -19,7 +19,7 @@ const Kategori = () => {
   return (
     <div className="category-container">
       {uniqueCategories.map((category) => (
-        <div
+        <div  
           key={category.category}
           className="category-card"
           onClick={() => handleCategoryClick(category.category)}

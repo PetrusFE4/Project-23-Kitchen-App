@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { resepData } from "../Data";
 
 const Home = () => {
   return (
@@ -23,17 +24,17 @@ const Home = () => {
         <div className="filter-buttons">
           <button className="filter-button active">All</button>
           <button className="filter-button">Popular</button>
-          <button className="filter-button">Kueh</button>
+          <button className="filter-button">Kuah</button>
           <button className="filter-button">Manis</button>
         </div>
       </section>
       <div className="container">
         <div className="recipe-grid">
-          {recipeData.map((recipe) => (
-            <div className="recipe-card" key={recipe.id}>
-              <img src={recipe.image} alt={recipe.title} />
-              <h3>{recipe.title}</h3>
-              <Link to={`/recipe/${recipe.id}`} className="details-button">
+          {resepData.map((resep) => (
+            <div className="recipe-card" key={resep.id}>
+              <img src={resep.image} alt={resep.title} />
+              <h3>{resep.title}</h3>
+              <Link to={`/recipe/${resep.id}`} className="details-button">
                 More details
               </Link>
             </div>
@@ -116,15 +117,5 @@ const Home = () => {
   );
 };
 
-const recipeData = [
-  { id: 1, image: "/src/assets/img/image1.jpg", title: "Masakan Hari Raya" },
-  { id: 2, image: "/src/assets/img/image1.jpg", title: "Masakan Tradisional" },
-  { id: 3, image: "/src/assets/img/image1.jpg", title: "Resep Daging" },
-  { id: 4, image: "/src/assets/img/image1.jpg", title: "Resep Ayam Goreng" },
-  { id: 5, image: "/src/assets/img/image1.jpg", title: "Resep Sayuran" },
-  { id: 6, image: "/src/assets/img/image1.jpg", title: "Resep Seafood" },
-  { id: 7, image: "/src/assets/img/image1.jpg", title: "Resep Menu Pagi" },
-  { id: 8, image: "/src/assets/img/image1.jpg", title: "Resep Menu Malam" },
-];
 
 export default Home;

@@ -13,7 +13,7 @@ const RecipeDetail = () => {
   return (
     <div className="recipe-detail-container">
       <div className="recipe-header">
-        <h1 className="recipe-title">{recipe.title}</h1>
+        {/* <h1 className="recipe-title">{recipe.title}</h1> */}
       </div>
       <div className="recipe-content">
         <table>
@@ -21,10 +21,19 @@ const RecipeDetail = () => {
             <tr>
               <td className="video-cell">
                 <div className="recipe-video">
-                  <video controls>
+                <iframe
+                    width="840px"
+                    height="473px"
+                    src={`https://www.youtube.com/embed/${recipe.video}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title="YouTube video"
+                ></iframe>
+                  
+                  {/* <video controls>
                     <source src={recipe.video} type="video/mp4" />
                     Your browser does not support the video tag.
-                  </video>
+                  </video> */}
                 </div>
               </td>
               <td className="image-cell">
@@ -36,7 +45,7 @@ const RecipeDetail = () => {
             <tr>
               <td>
                 <div className="recipe-description">
-                  <h2>Detail Makanan</h2>
+                  <h2>{recipe.title}</h2>
                   <p>{recipe.description}</p>
                 </div>
               </td>
