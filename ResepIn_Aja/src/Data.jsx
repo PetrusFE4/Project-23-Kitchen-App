@@ -10,7 +10,7 @@ import image4 from "./assets/img/image4.jpg"
         image: image4,
         title: "Scrambled and Fried Eggs",
         video: "UXtrScuC30E?si=GjepuQlryN6tl2Jz",
-        description: "ini adalah deskripsi makanan Barat",
+        description: "ini adalah deskripsi makanan Barat abdnvasjkdnakjndiwnjav jndiwn ajnckajsn cjkas kj skjdjkand",
         ingredients: ["Telur", "Roti", "Tomat", "Margarin", "Garam", "Lada"],
         steps: ["Siapkan 2 Roti", "Panaskan wajan dan tuangkan olive oil", "Pecahkan Telur dan tuangkan ke wajan","Aduk Telur seperti urak arik"," Beri garam secukupnya","beri lada secukupnya "],
         category: "Telur",
@@ -18,7 +18,7 @@ import image4 from "./assets/img/image4.jpg"
         {
         id: 2,
         image: image2,
-        title: "Masakan Tradisional",
+        title: "Masakan Tradisional URAAAAAAAAAAAAAAAAAAAAAAAAAA",
         video: "ptW7zemegL8?si=3jUVgkutvP8EfwtZ",
         description: "Ini adalah deskripsi untuk Masakan Tradisional.",
         ingredients: ["Bahan A", "Bahan B", "Bahan C"],

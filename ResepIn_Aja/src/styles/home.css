@@ -38,7 +38,7 @@
 .explore-button {
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #81c9f3, #8c4fcf);
+  background: linear-gradient(to right, #3F60B6, #6D5FC1, #FB9B65, #ECC444);;
   border: none;
   border-radius: 50px;
   padding: 10px 20px;

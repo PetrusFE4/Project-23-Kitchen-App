@@ -1,10 +1,7 @@
 .search_container{
     display: flex;
-    justify-content: center;
-  
-    
+    justify-content: center;   
 }
-
 .searchbar {
     display: flex;
     padding-top: 20px;
@@ -14,6 +11,9 @@
   .resep .card {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
+    max-width: 100%;
+    height: auto;
+    overflow: auto;
   }
   
   .resep .card:hover {
@@ -29,14 +29,23 @@
   .resep .card-body {
     padding: 15px;
   }
+
+  .card-body p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+  }
   
   .resep .card-title {
     font-size: 1.25rem;
     margin-bottom: 10px;
   }
+
   
   .resep .card-text {
     font-size: 1rem;
     margin-bottom: 15px;
   }
+
   

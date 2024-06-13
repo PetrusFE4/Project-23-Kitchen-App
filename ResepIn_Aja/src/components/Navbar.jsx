@@ -1,13 +1,12 @@
-// Navbar.js
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "../assets/Logo.png"
 
 const Navbar = () => {
   const navigate = useNavigate();
   return (
     <nav className="navbar">
       <div className="navbar-logo" onClick={() => navigate("/Home")}>
-        <img src="./src/assets/logo.png" alt="ResepIn Aja Logo" />
+        <img src={Logo} alt="ResepIn Aja Logo" />
         <span>ResepIn Aja</span>
       </div>
       <ul className="navbar-links">
