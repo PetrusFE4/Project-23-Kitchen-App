@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "resepin",
-    "host": "127.0.0.1",
+    "username": "gR16kzqtFBF7Wzz1",
+    "password": "cyCpRdPiCaKDyl30",
+    "database": "dyANIRr6hiBMqwgkn",
+    "host": "educalab.id",
     "dialect": "mysql"
   },
   "test": {
