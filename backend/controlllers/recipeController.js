@@ -5,6 +5,8 @@ function create(req, res){
         nama_resep: req.body.nama_resep,
         deskripsi: req.body.deskripsi,
         bahan: req.body.bahan,
+        gambar: req.body.gambar,
+        video: req.body.video,
         instruksi: req.body.instruksi,
         kategori: req.body.kategori,
         subKategori: req.body.subKategori,
@@ -63,6 +65,8 @@ function update(req,res){
         nama_resep: req.body.nama_resep,
         deskripsi: req.body.deskripsi,
         bahan: req.body.bahan,
+        gambar: req.body.gambar,
+        video: req.body.video,
         instruksi: req.body.instruksi,
         kategori: req.body.kategori,
         subKategori: req.body.subKategori
