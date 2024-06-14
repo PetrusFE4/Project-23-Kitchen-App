@@ -11,7 +11,7 @@ const Navbar = () => {
       </div>
       <ul className="navbar-links">
         <li>
-          <Link to="/Home">Home</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
           <a onClick={() => navigate("/Resep")}>Resep</a>

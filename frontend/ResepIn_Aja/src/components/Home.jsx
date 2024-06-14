@@ -1,25 +1,19 @@
 import { Link } from "react-router-dom";
-import { resepData as resepdummy } from "../Data";
 import { useState , useEffect } from "react";
 import axios from "axios";
 
 
 const Home = () => {
 
-  const [resepData, setResepData] = useState({});
+  const [resepData, setResepData] = useState([]);
 
 
   const getResep = async () => {
-    // const resep = await axios.get (
-    //   "http://localhost:8888/resep",{
-    //     mode:"cors"
-    //   }
-  // )
-       const resep = await fetch("http://localhost:8888/resep")
-       const json = resep.json()
-
-    setResepData(json)
-    console.log(json);
+    const resep = await axios.get (
+      "http://localhost:8888/resep"
+  )
+    console.log(resep.data);
+    setResepData(resep.data)
   }
 
   useEffect(() => {
@@ -51,14 +45,15 @@ const Home = () => {
           <button className="filter-button">Kuah</button>
           <button className="filter-button">Manis</button>
         </div>
+
       </section>
       <div className="container">
         <div className="recipe-grid">
-          {resepdummy.map((resep) => (
+          {resepData.map((resep) => (
             <div className="recipe-card" key={resep.id}>
-              <img src={resep.image} alt={resep.title} />
-              <h3>{resep.title}</h3>
-              <Link to={`/recipe/${resep.id}`} className="details-button">
+              <img src={resep.gambar} alt={resep.nama_resep} />
+              <h3>{resep.nama_resep}</h3>
+              <Link to={`/resep/${resep.id}`} className="details-button">
                 More details
               </Link>
             </div>
@@ -123,7 +118,6 @@ const Home = () => {
                   <span className="dot"></span>
                   <span className="dot"></span>
 
-                  
                 </div>
               </div>
               <div className="col-3 mt-20">

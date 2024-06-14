@@ -3,11 +3,6 @@ const dotenv = require('dotenv')
 const http = require('http');
 const port = process.env.PORT||8888;
 const app = require('./apps.js');
-app.use(
-    cors({
-        origin: "*"
-    })
-)
 dotenv.config();
 
 
