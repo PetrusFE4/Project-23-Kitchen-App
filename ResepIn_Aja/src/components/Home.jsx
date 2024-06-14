@@ -1,7 +1,31 @@
 import { Link } from "react-router-dom";
-import { resepData } from "../Data";
+import { resepData as resepdummy } from "../Data";
+import { useState , useEffect } from "react";
+import axios from "axios";
+
 
 const Home = () => {
+
+  const [resepData, setResepData] = useState({});
+
+
+  const getResep = async () => {
+    // const resep = await axios.get (
+    //   "http://localhost:8888/resep",{
+    //     mode:"cors"
+    //   }
+  // )
+       const resep = await fetch("http://localhost:8888/resep")
+       const json = resep.json()
+
+    setResepData(json)
+    console.log(json);
+  }
+
+  useEffect(() => {
+    getResep();
+  },[])
+
   return (
     <div className="home">
       <header className="home-header">
@@ -30,7 +54,7 @@ const Home = () => {
       </section>
       <div className="container">
         <div className="recipe-grid">
-          {resepData.map((resep) => (
+          {resepdummy.map((resep) => (
             <div className="recipe-card" key={resep.id}>
               <img src={resep.image} alt={resep.title} />
               <h3>{resep.title}</h3>
