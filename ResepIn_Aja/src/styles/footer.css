@@ -1,0 +1,76 @@
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding-top: 20px;
+    position: relative;
+    margin-top: 10px;
+  }
+  
+  .footer a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    color: #ffc107;
+    text-decoration: none;
+  }
+  
+  .footer .col-md-4,
+  .footer .col-lg-3,
+  .footer .col-xl-3 {
+    margin-top: 20px;
+  }
+  .footer .col-md-4 {
+    padding-right: 10px;
+  }
+  
+  .footer .fab {
+    font-size: 20px;
+  }
+  
+  .footer .col-md-4 img {
+    align-items: center;
+    height: auto;
+  }
+
+  
+  .footer h5 {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .footer h5::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    height: 2px;
+    background-color: #ffc107;
+  }
+  .Copyrigt {
+    font-weight: 300;
+    text-decoration: solid;
+    background-color: #ffc107;
+    width: auto;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    padding-top: 10px;
+  }
+  .Copyrigt p {
+    text-align: center;
+    align-items: center;
+
+
+  }
+  .Copyrigt:hover{
+    color: #000000;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+  }
