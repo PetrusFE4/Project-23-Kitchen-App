@@ -43,7 +43,7 @@ function register(req, res){
 }
 
 function login(req, res) {
-    models.user.findOne({where: {email: req.body.email}}).then(user => {
+    models.user.findOne({where: {username: req.body.username}}).then(user => {
         if(user === null) {
             res.status(401).json({
                 message: "User tidak ditemukan!"
@@ -52,7 +52,7 @@ function login(req, res) {
             bycrptjs.compare(req.body.password, user.password, function(err, result) {
                 if(result) {
                     const token = jwt.sign ({
-                        email: user.email,
+                        username: user.username,
                         userId: user.id
                     }, process.env.secret, function(err, token) {
                         res.status(200).json({
