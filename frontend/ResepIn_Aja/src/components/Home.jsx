@@ -7,7 +7,6 @@ const Home = () => {
 
   const [resepData, setResepData] = useState([]);
 
-
   const getResep = async () => {
     const resep = await axios.get (
       "http://localhost:8888/resep"
@@ -19,6 +18,20 @@ const Home = () => {
   useEffect(() => {
     getResep();
   },[])
+
+  const handleFav = async (resepId) => {
+     await axios.post (
+      "http://localhost:8888/user/favorites", {
+          "userId": 1,
+          "resepId": resepId
+      },{
+        headers:{
+          Authorization: "Bearer " +localStorage.getItem("authToken"),
+        }
+      }
+    )
+
+  } 
 
   return (
     <div className="home">
@@ -45,7 +58,7 @@ const Home = () => {
           <button className="filter-button">Kuah</button>
           <button className="filter-button">Manis</button>
         </div>
-
+        
       </section>
       <div className="container">
         <div className="recipe-grid">
@@ -53,9 +66,13 @@ const Home = () => {
             <div className="recipe-card" key={resep.id}>
               <img src={resep.gambar} alt={resep.nama_resep} />
               <h3>{resep.nama_resep}</h3>
-              <Link to={`/resep/${resep.id}`} className="details-button">
+              <Link to={`/recipe/${resep.id}`} className="details-button">
                 More details
               </Link>
+              <button className="details-button" onClick={()=> handleFav(resep.id)} >
+                fav
+              </button>
+
             </div>
           ))}
         </div>

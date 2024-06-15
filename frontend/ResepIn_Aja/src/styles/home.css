@@ -1,6 +1,5 @@
-
-  /* HOME CSS */
-  body {
+/* HOME CSS */
+body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -8,7 +7,6 @@
 
 .home {
   padding-top: 25px;
- /* padding: 20px; */
 }
 
 .home-header {
@@ -20,7 +18,6 @@
   font-size: 2.5em;
   color: #f8b400;
   margin-bottom: 10px;
-  text-align: center;
 }
 
 .home-header p {
@@ -38,14 +35,13 @@
 .explore-button {
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #3F60B6, #6D5FC1, #FB9B65, #ECC444);;
+  background: linear-gradient(to right, #3F60B6, #6D5FC1, #FB9B65, #ECC444);
   border: none;
   border-radius: 50px;
   padding: 10px 20px;
   color: white;
   font-size: 16px;
   cursor: pointer;
-  position: relative;
 }
 
 .explore-button span {
@@ -75,7 +71,6 @@
   margin-bottom: 20px;
 }
 
-
 .recipe-section h3 {
   font-size: 2em;
   color: #333;
@@ -88,7 +83,6 @@
   color: #000000;
   margin: 0;
   font-weight: 200;
- 
 }
 
 .filter-buttons {
@@ -97,7 +91,6 @@
   align-items: center;
   margin: 0;
   padding-right: 100px;
- 
 }
 
 .filter-button {
@@ -107,7 +100,6 @@
   margin: 0 5px;
   cursor: pointer;
   border-radius: 15px;
-  padding: 10px 20px;
 }
 
 .filter-button.active,
@@ -117,11 +109,10 @@
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-
-    
+  display: flex;
+  justify-content: center;
 }
+
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -138,7 +129,6 @@
   overflow: hidden;
   text-align: center;
   padding-bottom: 30px;
- 
 }
 
 .recipe-card img {
@@ -160,11 +150,10 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
 .col {
   padding-left: 100px;
-
 }
-
 
 /* Body.css */
 .body-section {
@@ -175,8 +164,8 @@
   display: flex;
   padding-top: 20px;
   margin-top: 20px;
-
 }
+
 .body-section h1 {
   font-weight: bold;
   align-items: center;
@@ -193,7 +182,22 @@
   .food-images img {
     max-width: 200px;
     align-items: center;
-    
+  }
+
+  .recipe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filter-buttons,
+  .col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .recipe-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -203,72 +207,25 @@
     justify-content: space-between;
     align-items: center;
     padding-right: 150px;
-    
   }
 }
-/* .resep-Aja {
-  background-color: #3D447A;
-  width: 100%;
-  height: auto;
-  justify-content: center;
-  display: flex;
-  margin-top: 20px;
-}
 
-.resep-container {
-  max-width: 900px;
-  padding-right: 100px;
-}
-
-.resep-title {
-  font-weight: bold;
-  color: #f8b400;
-  text-align: center;
-  align-items: center;
-}
-.resep-main {
-  color: #000000;
-  font-weight: 400;
-  text-align: center;
-  align-items: center;
-}
-
-.resep-dots .dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 5px;
-  background-color: #ffffff;
-  border-radius: 50%;
-  display: inline-block;
-  align-items: center;
-}
-
-.resep-dots {
-  display: flex;
-  justify-content: center;
-}
-
-.photos1{
-  align-items: center;
-  padding-left: 70px;
-} */
-
-
-.section-info{
+.section-info {
   background-color: #3D447A;
   height: auto;
   justify-content: center;
   display: flex;
   margin-top: 20px;
-
 }
-.container  {
+
+.container {
   display: flex;
   width: 100%;
   height: auto;
   align-items: center;
   text-align: justify;
 }
+
 .resep-dots .dot {
   margin: 0 5px;
   background-color: #ffffff;
@@ -276,6 +233,7 @@
   display: inline-block;
   align-items: center;
 }
+
 .row h6 {
   justify-content: center;
   margin: auto;
@@ -284,15 +242,37 @@
   font-family: sans-serif;
   color: #ffffff;
 }
+
 .row h2 {
   color: #f8b400;
   padding-left: 50px;
   text-align: center;
   font-family: 'Segoe UI';
   font-weight: bold;
-
 }
+
 .col-3 img {
   width: 100%;
   height: auto;
+}
+
+/* Pagination CSS */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
 }

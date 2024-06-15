@@ -1,14 +1,34 @@
 import { useParams } from "react-router-dom";
 import "../styles/RecipeDetail.css"; // Import file CSS
-import { resepData } from "../Data";
+import axios from "axios";
+import { resepData as resepDum } from "../Data";
+import { useState, useEffect } from "react";
 
 const RecipeDetail = () => {
+
+  const [resepData, setResepData] = useState({});
+
+
   const { id } = useParams();
-  const recipe = resepData.find((r) => r.id === parseInt(id));
+  const recipe = resepDum.find((r) => r.id === parseInt(id));
 
   if (!recipe) {
     return <div>Resep tidak ditemukan.</div>;
   }
+
+
+  const getResep = async () => {
+    const resep = await axios.get (
+      `http://localhost:8888/resep/${id}`
+  )
+    console.log(resep.data);
+    setResepData(resep.data)
+  }
+  useEffect(() => {
+    getResep();
+  },[])
+
+
 
   return (
     <div className="recipe-detail-container">
@@ -24,7 +44,7 @@ const RecipeDetail = () => {
                 <iframe
                     width="840px"
                     height="473px"
-                    src={`https://www.youtube.com/embed/${recipe.video}`}
+                    src={`https://www.youtube.com/embed/${resepData.video}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     title="YouTube video"
@@ -38,38 +58,38 @@ const RecipeDetail = () => {
               </td>
               <td className="image-cell">
                 <div className="recipe-image">
-                  <img src={recipe.image} alt={recipe.title} />
+                  <img src={resepData.image} alt={resepData.nama_resep} />
                 </div>
               </td>
             </tr>
             <tr>
               <td>
                 <div className="recipe-description">
-                  <h2>{recipe.title}</h2>
-                  <p>{recipe.description}</p>
+                  <h2>{resepData.nama_resep}</h2>
+                  <p>{resepData.deskripsi}</p>
                 </div>
               </td>
               <td>
-                <div className="recipe-details">
+                {/* <div className="recipe-details">
                   <h2>Detail Bahan</h2>
                   <ul>
-                    {recipe.ingredients.map((ingredient, index) => (
+                    {resepData.ingredients.map((ingredient, index) => (
                       <li key={index}>{ingredient}</li>
                     ))}
                   </ul>
-                </div>
+                </div> */}
               </td>
             </tr>
             <tr>
               <td colSpan="2">
-                <div className="recipe-steps">
+                {/* <div className="recipe-steps">
                   <h2>Langkah-langkah Pembuatan</h2>
                   <ol>
-                    {recipe.steps.map((step, index) => (
+                    {resepData.steps.map((step, index) => (
                       <li key={index}>{step}</li>
                     ))}
                   </ol>
-                </div>
+                </div> */}
               </td>
             </tr>
           </tbody>

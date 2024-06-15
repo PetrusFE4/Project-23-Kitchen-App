@@ -1,9 +1,31 @@
-/* eslint-disable react/no-unescaped-entities */
-
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("http://localhost:8888/login", {
+        email,
+        username,
+        password,
+      });
+      const { token } = response.data;
+      // Simpan token di local storage atau state manajemen yang lain
+      localStorage.setItem("authToken", token);
+      navigate("/Home");
+    } catch (err) {
+      setError("Login failed. Please check your credentials.");
+    }
+  };
+
   return (
     <div>
       <div className="container d-flex justify-content-center align-items-center min-vh-100">
@@ -44,11 +66,23 @@ const Login = () => {
                 <h2>Hello, Again</h2>
                 <p>We are happy to have you back.</p>
               </div>
+              {error && <div className="alert alert-danger">{error}</div>}
               <div className="input-group mb-3">
                 <input
                   type="text"
                   className="form-control form-control-lg bg-light fs-6"
-                  placeholder="Email address"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control form-control-lg bg-light fs-6"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="input-group mb-1">
@@ -56,6 +90,8 @@ const Login = () => {
                   type="password"
                   className="form-control form-control-lg bg-light fs-6"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="input-group mb-5 d-flex justify-content-between">
@@ -82,7 +118,7 @@ const Login = () => {
                 <button
                   className="btn text-white btn-lg w-100 fs-6"
                   style={{ background: "#3D447A" }}
-                  onClick={() => Navigate("/Home")}
+                  onClick={handleLogin}
                 >
                   Login
                 </button>
@@ -100,11 +136,9 @@ const Login = () => {
               </div>
               <div className="row">
                 <p className="text-bold text-center">
-                  {" "}
                   Don't have account?
-                  <a className="link-up" onClick={() => Navigate("/Signup")}>
-                    {" "}
-                    Sign Up{" "}
+                  <a className="link-up" onClick={() => navigate("/Signup")}>
+                    Sign Up
                   </a>
                 </p>
               </div>
@@ -113,7 +147,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default Login;

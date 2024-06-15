@@ -11,7 +11,9 @@ app.use(
         credentials: true,
         allowedHeaders: ["Content-Type", "Authorization", "Cookies"],
       })
+    
 )
+app.use(express.urlencoded({ extended: true }));
 const route = require('./routes/web');
 const port = process.env.PORT||8888;
 app.use(bodyParser.json());
