@@ -16,4 +16,31 @@
     font-weight: bold;
     padding-top: 20px;
 }
+.form-set form {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+
+}
+.form-set button {
+    margin-top: 20px;
+    margin: 2px;
+}
+.textset{
+    font-weight: 100;
+}
+.formsetting {
+    justify-content: center;
+    max-width: 1000px;
+    margin: auto;
+
+}
+.simpanbutton {
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    border-radius: 4px;
+    background-color: yellow;
+}
 

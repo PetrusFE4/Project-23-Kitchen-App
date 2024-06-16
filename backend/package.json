@@ -16,8 +16,5 @@
     "mysql2": "^3.10.0",
     "sequelize": "^6.37.3"
   },
-  "scripts": {
-    "start": "node server.js"
-  },
   "description": ""
 }

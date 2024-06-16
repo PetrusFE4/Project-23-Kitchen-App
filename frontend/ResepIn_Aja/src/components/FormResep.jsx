@@ -1,10 +1,12 @@
-import {useState} from 'react'
+import { useState } from "react";
 
 const FormResep = () => {
-  const [bahanList, setBahanList] = useState(['']);
+  const [bahanList, setBahanList] = useState([""]);
 
   function konsultasi() {
-    window.open("https://api.whatsapp.com/send?phone=6282336713898&text=Saya%20Mau%20Konsultasi%20Nih%20Kak")
+    window.open(
+      "https://api.whatsapp.com/send?phone=6282336713898&text=Saya%20Mau%20Konsultasi%20Nih%20Kak"
+    );
     console.log("test");
   }
 
@@ -15,7 +17,7 @@ const FormResep = () => {
   };
 
   const handleAddBahan = () => {
-    setBahanList([...bahanList, '']);
+    setBahanList([...bahanList, ""]);
   };
 
   const handleRemoveBahan = (index) => {
@@ -27,12 +29,13 @@ const FormResep = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log('Data yang akan dikirim', bahanList);
+      console.log("Data yang akan dikirim", bahanList);
       // const response = await axios.post('/api/bahan', { bahan: bahanList });
     } catch (error) {
-      console.error('Terjadi kesalahan saat mengirim data', error);
+      console.error("Terjadi kesalahan saat mengirim data", error);
     }
   };
+
   return (
     <div className="bodyform">
       <section className="bodyformp">
@@ -61,31 +64,79 @@ const FormResep = () => {
           </div>
         </div>
       </section>
-      <section>
+      <section className="form-set">
         <div className="form">
           <h1 className="bagikan">Bagikan Resep Kamu</h1>
+          <p className="text-resep text-center">
+            Masukan Semua jenis Bahan Resep Masakan Yang Ingin Kamu Buat
+            Disini...
+          </p>
+          <img src="src/assets/img/image1.jpg" alt="image" />
         </div>
-        <form onSubmit={handleSubmit}>
-        {bahanList.map((bahan, index) => (
-        <div key={index}>
-          <input
-            type="text"
-            value={bahan}
-            onChange={event => handleInputChange(index, event)}
-            placeholder="Nama Bahan"
-          />
-          <button type="button" onClick={() => handleRemoveBahan(index)}>
-            Hapus
+        <form className="formsetting" onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label className="form-label">Nama Masakan :</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Masukan Nama Masakan Kamu"
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Penjelasan Singkat :</label>
+            <textarea
+              className="form-control"
+              placeholder="Tuliskan dengan singkat terkait masakan kamu"
+            ></textarea>
+          </div>
+          {/* <button type="submit" className="btn btn-primary">
+            Submit
+
+          </button> */}
+          <label htmlFor="NamBahan"> Nama Bahan :</label> <br />
+          <p className="textset-up fst-italic">
+            {" "}
+            (Masukan Semua Jenis Bahan Masakan kamu)
+          </p>
+          {bahanList.map((bahan, index) => (
+            <div className="mb-3" key={index}>
+              <input
+                type="text"
+                value={bahan}
+                onChange={(event) => handleInputChange(index, event)}
+                placeholder="Nama Bahan"
+              />
+              <button type="button" onClick={() => handleRemoveBahan(index)}>
+                Delete
+              </button>
+              <button type="button" onClick={handleAddBahan}>
+                Add
+              </button>
+              <button type="button" onClick={konsultasi}>
+                Konsultasi
+              </button>
+            </div>
+          ))}
+          <div className="mb-3">
+            <label className="caramasak">Cara Memasak :</label>
+            <textarea
+              className="form-control"
+              placeholder="Tuliskan secara detail terkait tata cara memasak"
+            ></textarea>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">
+              Masukan Url Video Turial Resep Masakan Kamu :
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Masukan url video kamu"
+            />
+          </div>
+          <button type="button" className="simpanbutton">
+            Large button
           </button>
-        </div>
-      ))}
-      <button type="button" onClick={handleAddBahan}>
-        Tambah Bahan
-      </button>
-      <button type="submit">Kirim</button>
-      <button type="button" onClick={konsultasi}>
-        Konsultasi
-      </button>
         </form>
       </section>
     </div>

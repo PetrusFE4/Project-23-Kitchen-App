@@ -1,5 +1,5 @@
-'use strict';
-const { favorite, resep, user } = require('../models');
+"use strict";
+const { favorite, resep, user } = require("../models");
 
 // Get favorites of a specific user
 const getFavoritesByUser = async (req, res) => {
@@ -11,13 +11,15 @@ const getFavoritesByUser = async (req, res) => {
       include: [
         {
           model: resep,
-          as: 'resep'
-        }
-      ]
+          as: "resep",
+        },
+      ],
     });
 
     if (!userFavorites) {
-      return res.status(404).json({ message: 'Favorites not found for this user' });
+      return res
+        .status(404)
+        .json({ message: "Favorites not found for this user" });
     }
 
     res.status(200).json(userFavorites);
@@ -32,14 +34,14 @@ const addRecipeToFavorites = async (req, res) => {
 
   try {
     const newfavorite = await favorite.findOne({
-      where: { userId, resepId }
+      where: { userId, resepId },
     });
 
     if (newfavorite) {
-      res.status(400).json({ message: 'Favorite already exist' });
+      res.status(400).json({ message: "Favorite already exist" });
     } else {
       await favorite.create({ userId, resepId });
-      res.status(200).json({message: 'Resep ditambahkan'});
+      res.status(200).json({ message: "Resep ditambahkan" });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -52,14 +54,14 @@ const removeRecipeFromFavorites = async (req, res) => {
 
   try {
     const favoriteToRemove = await favorite.findOne({
-      where: { userId, resepId }
+      where: { userId, resepId },
     });
 
     if (favoriteToRemove) {
       await favoriteToRemove.destroy();
-      res.status(200).json({ message: 'Recipe removed from favorites' });
+      res.status(200).json({ message: "Recipe removed from favorites" });
     } else {
-      res.status(404).json({ message: 'Favorite not found' });
+      res.status(404).json({ message: "Favorite not found" });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -69,5 +71,5 @@ const removeRecipeFromFavorites = async (req, res) => {
 module.exports = {
   getFavoritesByUser,
   addRecipeToFavorites,
-  removeRecipeFromFavorites
+  removeRecipeFromFavorites,
 };
