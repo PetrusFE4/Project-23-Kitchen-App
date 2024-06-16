@@ -5,22 +5,20 @@ import axios from "axios";
 const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:8888/login", {
-        email,
         username,
         password,
       });
-      const { token } = response.data;
-      // Simpan token di local storage atau state manajemen yang lain
+      const { token, user } = response.data; // Assuming the response includes a user object
       localStorage.setItem("authToken", token);
+      localStorage.setItem("user", JSON.stringify(user));
       navigate("/Home");
+      window.location.reload(); // Refresh the page after navigation
     } catch (err) {
       setError("Login failed. Please check your credentials.");
     }
@@ -74,15 +72,6 @@ const Login = () => {
                   placeholder="Username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  className="form-control form-control-lg bg-light fs-6"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="input-group mb-1">
@@ -147,7 +136,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Login;

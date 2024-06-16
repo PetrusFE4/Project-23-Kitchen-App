@@ -1,36 +1,56 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-// import { resepData } from "../Data";
 import "../styles/resep.css";
 import axios from "axios";
 
 const Resep = () => {
-
-
   const [resepData, setResepData] = useState([]);
+  const [searchItem, setSearchItem] = useState("");
+  const [filterResep, setFilterResep] = useState([]);
+  const location = useLocation();
 
   const getResep = async () => {
-    const resep = await axios.get (
-      "http://localhost:8888/resep"
-  )
-    console.log(resep.data);
-    setResepData(resep.data)
-  }
+    try {
+      const response = await axios.get("http://localhost:8888/resep");
+      console.log(response.data);
+      setResepData(response.data);
+      setFilterResep(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
     getResep();
-  },[])
+  }, []);
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const selectedCategory = params.get("kategori");
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const selectedCategory = params.get("kategori");
 
-  // const filteredResep = resepData.filter(
-  //   (resep) =>
-  //     (!selectedCategory || resep.kategori === selectedCategory) &&
-  //     resep.nama_resep.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
+    const filterItem = resepData.filter(
+      (resep) =>
+        (!selectedCategory || resep.kategori === selectedCategory) &&
+        (!searchItem || (resep.nama_resep && resep.nama_resep.toLowerCase().includes(searchItem.toLowerCase())))
+    );
+    setFilterResep(filterItem);
+  }, [location.search, searchItem, resepData]);
+
+  const handleInputChange = (e) => {
+    const searchItem = e.target.value;
+    setSearchItem(searchItem);
+
+    const params = new URLSearchParams(location.search);
+    const selectedCategory = params.get("kategori");
+
+    const filterItem = resepData.filter(
+      (resep) =>
+        (!selectedCategory || resep.kategori === selectedCategory) &&
+        resep.nama_resep &&
+        resep.nama_resep.toLowerCase().includes(searchItem.toLowerCase())
+    );
+    setFilterResep(filterItem);
+  };
 
   return (
     <>
@@ -41,8 +61,8 @@ const Resep = () => {
               type="text"
               className="form-control"
               placeholder="Cari Resep..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              value={searchItem}
+              onChange={handleInputChange}
             />
           </div>
         </div>
@@ -50,7 +70,7 @@ const Resep = () => {
 
       <div className="container">
         <div className="resep row">
-          {resepData.map((resep) => (
+          {filterResep.map((resep) => (
             <div className="col-md-3 mb-4" key={resep.id}>
               <div className="card">
                 <img

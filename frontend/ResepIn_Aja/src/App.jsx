@@ -10,6 +10,8 @@ import RecipeDetail from "./components/RecipeDetail";
 import Resep from "./components/Resep";
 import Kategori from "./components/Kategori";
 import FormResep from "./components/FormResep";
+import Favorites from "./components/Favorites";
+
 
 // import Login from "./components/Login";
 //import Signup from "./components/Signup"
@@ -48,6 +50,7 @@ const App = () => {
           <Route path="/recipe/:id" element={<RecipeDetail />} />
           <Route path="/Kategori" element={<Kategori />} />
           <Route path="/FormResep" element={<FormResep />} />
+          <Route path="/Favorites" element={<Favorites/>}/>
           
           {/* Tambahkan rute untuk RecipeDetail */}
         </Routes>

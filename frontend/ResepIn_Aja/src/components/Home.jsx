@@ -2,36 +2,49 @@ import { Link } from "react-router-dom";
 import { useState , useEffect } from "react";
 import axios from "axios";
 
-
 const Home = () => {
-
   const [resepData, setResepData] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      setIsAuthenticated(true);
+      setUserId(user.id);
+    }
+  }, []);
 
   const getResep = async () => {
-    const resep = await axios.get (
-      "http://localhost:8888/resep"
-  )
+    const resep = await axios.get("http://localhost:8888/resep");
     console.log(resep.data);
-    setResepData(resep.data)
-  }
+    setResepData(resep.data);
+  };
 
   useEffect(() => {
     getResep();
-  },[])
+  }, []);
 
   const handleFav = async (resepId) => {
-     await axios.post (
-      "http://localhost:8888/user/favorites", {
-          "userId": 1,
-          "resepId": resepId
-      },{
-        headers:{
-          Authorization: "Bearer " +localStorage.getItem("authToken"),
-        }
-      }
-    )
+    if (!isAuthenticated) {
+      alert("Please login to favorite a recipe");
+      return;
+    }
 
-  } 
+    await axios.post(
+      "http://localhost:8888/user/favorites",
+      {
+        userId: userId,
+        resepId: resepId,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("authToken"),
+        },
+      }
+    );
+  };
 
   return (
     <div className="home">
@@ -58,7 +71,6 @@ const Home = () => {
           <button className="filter-button">Kuah</button>
           <button className="filter-button">Manis</button>
         </div>
-        
       </section>
       <div className="container">
         <div className="recipe-grid">
@@ -69,10 +81,9 @@ const Home = () => {
               <Link to={`/recipe/${resep.id}`} className="details-button">
                 More details
               </Link>
-              <button className="details-button" onClick={()=> handleFav(resep.id)} >
+              <button className="details-button" onClick={() => handleFav(resep.id)}>
                 fav
               </button>
-
             </div>
           ))}
         </div>
@@ -134,7 +145,6 @@ const Home = () => {
                   <span className="dot"></span>
                   <span className="dot"></span>
                   <span className="dot"></span>
-
                 </div>
               </div>
               <div className="col-3 mt-20">
@@ -151,6 +161,5 @@ const Home = () => {
     </div>
   );
 };
-
 
 export default Home;

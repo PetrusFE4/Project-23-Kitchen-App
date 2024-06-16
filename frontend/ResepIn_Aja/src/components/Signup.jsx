@@ -1,7 +1,35 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSignup = async (e) => {
+    e.preventDefault(); // Prevent form from refreshing the page
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:8888/register", {
+        username,
+        email,
+        password,
+      });
+      // Process response from server
+      navigate("/Login");
+    } catch (err) {
+      setError("Registration failed. Please try again.");
+    }
+  };
+
   return (
     <div>
       <div className="container d-flex justify-content-center align-items-center min-vh-100">
@@ -42,44 +70,58 @@ const Signup = () => {
                 <h2>SIGN UP HERE</h2>
                 <p>Create Your User Account Now</p>
               </div>
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  className="form-control form-control-lg bg-light fs-6"
-                  placeholder="Your Full Name"
-                />
-              </div>
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  className="form-control form-control-lg bg-light fs-6"
-                  placeholder="Email address"
-                />
-              </div>
-              <div className="input-group mb-3">
-                <input
-                  type="text"
-                  className="form-control form-control-lg bg-light fs-6"
-                  placeholder="Password"
-                />
-              </div>
-              <div className="input-group mb-1">
-                <input
-                  type="password"
-                  className="form-control form-control-lg bg-light fs-6"
-                  placeholder="Confirm Password"
-                />
-              </div>
-              <div className="input-group mb-3">
-                <button
-                  className="btn text-white btn-lg w-100 fs-6"
-                  style={{ background: "#3D447A" }}
-                  onClick={() => Navigate("/Home")}
-                >
-                  {" "}
-                  Sign Up
-                </button>
-              </div>
+              {error && <div className="alert alert-danger">{error}</div>}
+              <form onSubmit={handleSignup} className="w-100">
+                <div className="input-group mb-3">
+                  <input
+                    type="text"
+                    className="form-control form-control-lg bg-light fs-6"
+                    placeholder="Your Full Name"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="input-group mb-3">
+                  <input
+                    type="email"
+                    className="form-control form-control-lg bg-light fs-6"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="input-group mb-3">
+                  <input
+                    type="password"
+                    className="form-control form-control-lg bg-light fs-6"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="input-group mb-1">
+                  <input
+                    type="password"
+                    className="form-control form-control-lg bg-light fs-6"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="input-group mb-3">
+                  <button
+                    type="submit"
+                    className="btn text-white btn-lg w-100 fs-6"
+                    style={{ background: "#3D447A" }}
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
