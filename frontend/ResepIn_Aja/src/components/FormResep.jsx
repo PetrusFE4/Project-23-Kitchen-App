@@ -3,12 +3,12 @@ import { useState } from "react";
 const FormResep = () => {
   const [bahanList, setBahanList] = useState([""]);
 
-  function konsultasi() {
-    window.open(
-      "https://api.whatsapp.com/send?phone=6282336713898&text=Saya%20Mau%20Konsultasi%20Nih%20Kak"
-    );
-    console.log("test");
-  }
+  // function konsultasi() {
+  //   window.open(
+  //     "https://api.whatsapp.com/send?phone=6282336713898&text=Saya%20Mau%20Konsultasi%20Nih%20Kak"
+  //   );
+  //   console.log("test");
+  // }
 
   const handleInputChange = (index, event) => {
     const values = [...bahanList];
@@ -35,6 +35,11 @@ const FormResep = () => {
       console.error("Terjadi kesalahan saat mengirim data", error);
     }
   };
+  const [file, setFile] = useState();
+  function handleChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
 
   return (
     <div className="bodyform">
@@ -71,7 +76,14 @@ const FormResep = () => {
             Masukan Semua jenis Bahan Resep Masakan Yang Ingin Kamu Buat
             Disini...
           </p>
-          <img src="src/assets/img/image1.jpg" alt="image" />
+          {/* <img src="src/assets/img/image1.jpg" alt="image" /> */}
+          <div className="container">
+            <img src={file} className="custom-image" />
+            <div>
+              <h4 className="text-add">Upload Resep Masakan Kamu :</h4>
+              <input className="setfile" type="file" onChange={handleChange} />
+            </div>
+          </div>
         </div>
         <form className="formsetting" onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -93,37 +105,83 @@ const FormResep = () => {
             Submit
 
           </button> */}
-          <label htmlFor="NamBahan"> Nama Bahan :</label> <br />
-          <p className="textset-up fst-italic">
-            {" "}
-            (Masukan Semua Jenis Bahan Masakan kamu)
-          </p>
-          {bahanList.map((bahan, index) => (
-            <div className="mb-3" key={index}>
-              <input
-                type="text"
-                value={bahan}
-                onChange={(event) => handleInputChange(index, event)}
-                placeholder="Nama Bahan"
-              />
-              <button type="button" onClick={() => handleRemoveBahan(index)}>
-                Delete
-              </button>
-              <button type="button" onClick={handleAddBahan}>
-                Add
-              </button>
-              <button type="button" onClick={konsultasi}>
+          <div className="row align-items-center">
+            <div className="column right">
+              <label htmlFor="NamBahan"> Cara Memasak :</label> <br />
+              <p className="textset-up fst-italic">
+                {" "}
+                (Tuliskan secara detail terkait tata cara memasak)
+              </p>
+              {bahanList.map((bahan, index) => (
+                <div className="bahanform" key={index}>
+                  <input
+                    type="text"
+                    value={bahan}
+                    onChange={(event) => handleInputChange(index, event)}
+                    placeholder="Langkah-Langkah"
+                  />
+                  <button
+                    className="btn-dlt"
+                    type="button"
+                    onClick={() => handleRemoveBahan(index)}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className="btn-add"
+                    type="button"
+                    onClick={handleAddBahan}
+                  >
+                    Add
+                  </button>
+                  {/* <button type="button" onClick={konsultasi}>
                 Konsultasi
-              </button>
+              </button> */}
+                </div>
+              ))}
             </div>
-          ))}
-          <div className="mb-3">
+            <div className="column left">
+              <label htmlFor="NamBahan"> Nama Bahan :</label> <br />
+              <p className="textset-up fst-italic">
+                {" "}
+                (Masukan Semua Jenis Bahan Masakan kamu)
+              </p>
+              {bahanList.map((bahan, index) => (
+                <div className="bahanform" key={index}>
+                  <input
+                    type="text"
+                    value={bahan}
+                    onChange={(event) => handleInputChange(index, event)}
+                    placeholder="Nama Bahan"
+                  />
+                  <button
+                    className="btn-dlt"
+                    type="button"
+                    onClick={() => handleRemoveBahan(index)}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className="btn-add"
+                    type="button"
+                    onClick={handleAddBahan}
+                  >
+                    Add
+                  </button>
+                  {/* <button type="button" onClick={konsultasi}>
+                Konsultasi
+              </button> */}
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* <div className="mb-3">
             <label className="caramasak">Cara Memasak :</label>
             <textarea
               className="form-control"
               placeholder="Tuliskan secara detail terkait tata cara memasak"
             ></textarea>
-          </div>
+          </div> */}
           <div className="mb-3">
             <label className="form-label">
               Masukan Url Video Turial Resep Masakan Kamu :
@@ -135,7 +193,7 @@ const FormResep = () => {
             />
           </div>
           <button type="button" className="simpanbutton">
-            Large button
+            Simpan Resep Mu
           </button>
         </form>
       </section>

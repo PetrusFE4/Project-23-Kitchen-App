@@ -12,7 +12,6 @@ import Kategori from "./components/Kategori";
 import FormResep from "./components/FormResep";
 import Favorites from "./components/Favorites";
 
-
 // import Login from "./components/Login";
 //import Signup from "./components/Signup"
 
@@ -32,6 +31,7 @@ import "./styles/RecipeDetail.css";
 import "./styles/resep.css";
 import "./styles/Kategori.css";
 import "./styles/formresep.css";
+import "./styles/favorite.css";
 
 const App = () => {
   return (
@@ -50,8 +50,8 @@ const App = () => {
           <Route path="/recipe/:id" element={<RecipeDetail />} />
           <Route path="/Kategori" element={<Kategori />} />
           <Route path="/FormResep" element={<FormResep />} />
-          <Route path="/Favorites" element={<Favorites/>}/>
-          
+          <Route path="/Favorites" element={<Favorites />} />
+
           {/* Tambahkan rute untuk RecipeDetail */}
         </Routes>
         <Footer />

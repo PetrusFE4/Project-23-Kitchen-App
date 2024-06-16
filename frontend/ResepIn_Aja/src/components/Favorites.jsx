@@ -9,11 +9,14 @@ const Favorites = () => {
   useEffect(() => {
     const getFavorites = async () => {
       try {
-        const response = await axios.get(`http://localhost:8888/user/${user.id}/favorites`, {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("authToken"),
-          },
-        });
+        const response = await axios.get(
+          `http://localhost:8888/user/${user.id}/favorites`,
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("authToken"),
+            },
+          }
+        );
         setFavorites(response.data);
       } catch (error) {
         console.error("Error fetching favorites:", error);
@@ -31,7 +34,7 @@ const Favorites = () => {
 
   return (
     <div className="favorites">
-      <h2>Your Favorite Recipes</h2>
+      <h2 className="textfav">Your Favorite Recipes</h2>
       <div className="recipe-grid">
         {favorites.map((fav) => (
           <div className="recipe-card" key={fav.resep.id}>

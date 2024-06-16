@@ -41,6 +41,76 @@
     margin: auto;
     text-align: center;
     border-radius: 4px;
-    background-color: yellow;
+    background-color: #FF0000;
+    /* padding-top: 15px;
+    padding-right: 30px; */
+    align-items: center;
+    width: 20%;
+    height: auto;
+    color: white;
+}
+.simpanbutton:hover {
+    background-color: #F6BE2C;
+}
+.bahanform input {
+    width: 50%;
+    height: auto;
+    border-radius: 5px;
+    border: none;
+}
+.btn-dlt {
+    text-align: center;
+    border-radius: 4px;
+    background-color: #FF0000;
+    color: white;
+    border: none;
+}
+.btn-add {
+    text-align: center;
+    border-radius: 4px;
+    background-color: #0048ff;
+    color: white;
+    border: none;
+
+}
+.custom-image {
+    max-width: 300px; /* Ubah ukuran gambar sesuai yang Anda inginkan */
+  height: auto; /* Tetapkan height: auto agar rasio aspek gambar tetap terjaga */
+}
+.text-add {
+    text-align: center;
+    font-weight: bold;
+    font-family: serif;
+}
+.setfile {
+    padding-left: 50px;
+    text-align: center;
 }
 
+
+/* Create two unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+ /* Should be removed. Only for demonstration */
+  }
+  
+  .left {
+    width: 40%;
+  }
+  
+  .right {
+    width: 60%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .bahanform input {
+ height: 40px;
+ margin: 5px;
+  }
