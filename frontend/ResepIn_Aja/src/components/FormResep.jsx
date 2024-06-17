@@ -40,6 +40,27 @@ const FormResep = () => {
     console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
+  // ========================================================================
+
+  const [AddList, setAddlist] = useState([""]);
+
+  const handleInputList = (index, event) => {
+    const values = [...AddList];
+    values[index] = event.target.value;
+    setAddlist(values);
+  };
+
+  const handleAddList = () => {
+    setAddlist([...AddList, ""]);
+  };
+
+  const handleRemoveList = (index) => {
+    const values = [...AddList];
+    values.splice(index, 1);
+    setAddlist(values);
+  };
+
+  // ========================================================================
 
   return (
     <div className="bodyform">
@@ -58,12 +79,10 @@ const FormResep = () => {
                   cumque et quas quis, deleniti odit iste ipsa?
                 </h6>
               </div>
-              <div className="col-3 m-auto">
-                <img
-                  className="fotomasak"
-                  src="/src/assets/iconseflog2.png"
-                  alt="Girl thinking"
-                />
+              <div className="col-2 m-auto">
+                <div className="set-fotomasak">
+                  <img src="/src/assets/iconseflog3.png" alt="Girl thinking" />
+                </div>
               </div>
             </div>
           </div>
@@ -112,25 +131,25 @@ const FormResep = () => {
                 {" "}
                 (Tuliskan secara detail terkait tata cara memasak)
               </p>
-              {bahanList.map((bahan, index) => (
+              {AddList.map((bahan, index) => (
                 <div className="bahanform" key={index}>
                   <input
                     type="text"
                     value={bahan}
-                    onChange={(event) => handleInputChange(index, event)}
+                    onChange={(event) => handleInputList(index, event)}
                     placeholder="Langkah-Langkah"
                   />
                   <button
                     className="btn-dlt"
                     type="button"
-                    onClick={() => handleRemoveBahan(index)}
+                    onClick={() => handleRemoveList(index)}
                   >
                     Delete
                   </button>
                   <button
                     className="btn-add"
                     type="button"
-                    onClick={handleAddBahan}
+                    onClick={handleAddList}
                   >
                     Add
                   </button>

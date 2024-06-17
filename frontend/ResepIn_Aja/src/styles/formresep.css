@@ -6,9 +6,16 @@
     padding-right: 200px;
     justify-content: center;
 } */
-.fotomasak {
+/* .fotomasak {
     width: 100%;
     height: auto;
+} */
+
+.set-fotomasak img{
+    width: 150%;
+    height: 50%;
+     margin-top: 10px;
+     margin-bottom: 20px;
 }
 .bagikan {
     text-align: center;
@@ -48,6 +55,7 @@
     width: 20%;
     height: auto;
     color: white;
+    margin-bottom: 30px;
 }
 .simpanbutton:hover {
     background-color: #F6BE2C;
