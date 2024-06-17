@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Logo from "../assets/Logo.png";
+// import "./Navbar.css"; // Pastikan file CSS sudah diimpor
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -11,8 +12,10 @@ const Navbar = () => {
     const token = localStorage.getItem("authToken");
     if (token) {
       const user = JSON.parse(localStorage.getItem("user"));
-      setUsername(user.username);
-      setRole(user.role);
+      if (user) { // Tambahkan pengecekan untuk memastikan user ada
+        setUsername(user.username);
+        setRole(user.role);
+      }
     }
   }, []);
 
@@ -47,9 +50,9 @@ const Navbar = () => {
         <li>
           <Link to="/AboutUs">About us</Link>
         </li>
-              <li>
-                <Link to="/Favorites">Favorites</Link>
-              </li>
+        <li>
+          <Link to="/Favorites">Favorites</Link>
+        </li>
       </ul>
       <div className="navbar-auth">
         {username ? (

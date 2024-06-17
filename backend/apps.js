@@ -53,7 +53,7 @@ app.use(bodyParser.json());
 
 // Menggunakan routing dari file web.js di bawah /cek
 const route = require("./routes/web");
-app.use("/", route);
+app.use('/', route);
 
 // Mengakses folder uploads secara statis
 app.use("/uploads", express.static("uploads"));
