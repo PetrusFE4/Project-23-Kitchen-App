@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const UploadResep = () => {
   const [recipeData, setRecipeData] = useState([]);
   const navigate = useNavigate();
-  const userId = JSON.parse(localStorage.getItem('user'))?.id; // Asumsikan userId disimpan di localStorage dalam objek user
+  const userId = JSON.parse(localStorage.getItem('user'))?.id; 
 
   useEffect(() => {
 
@@ -24,9 +24,8 @@ const UploadResep = () => {
   }, [userId, navigate]);
 
   if (!userId) {
-    return <p>Please log in to see your recipes.</p>;
+    return <p>Please log in to see your favorite recipes.</p>;
   }
-
 
   return (
     <>
@@ -62,4 +61,4 @@ const UploadResep = () => {
   );
 };
 
-export default UploadResep;
+export default UploadResep;

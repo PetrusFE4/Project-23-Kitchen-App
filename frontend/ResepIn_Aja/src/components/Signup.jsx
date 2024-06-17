@@ -11,7 +11,7 @@ const Signup = () => {
   const [error, setError] = useState("");
 
   const handleSignup = async (e) => {
-    e.preventDefault(); // Prevent form from refreshing the page
+    e.preventDefault(); 
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
       return;
@@ -23,7 +23,6 @@ const Signup = () => {
         email,
         password,
       });
-      // Process response from server
       navigate("/Login");
     } catch (err) {
       setError("Registration failed. Please try again.");

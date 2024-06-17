@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     bahan: DataTypes.TEXT('long'),
     instruksi: DataTypes.TEXT('long'),
     video: DataTypes.STRING,
-    gambar: DataTypes.STRING,
+    gambar: DataTypes.TEXT('long'),
     kategori: DataTypes.STRING,
     subKategori: DataTypes.STRING
   }, {

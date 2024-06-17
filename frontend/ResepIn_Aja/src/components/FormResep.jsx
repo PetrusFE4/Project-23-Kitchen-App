@@ -1,14 +1,23 @@
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const FormResep = () => {
   const [bahanList, setBahanList] = useState([""]);
+  const [instruksiList, setInstruksi] = useState([""]);
+  const [gambar, setGambar] = useState("");
+  const [kategori, setKategori] = useState("");
+  const [nama_resep, setNamaResep] = useState("");
+  const [deskripsi, setDeskripsi] = useState("");
+  const [subkategori, setSubkategori] = useState("");
+  const [video, setVideo] = useState("");
+  const userId = JSON.parse(localStorage.getItem('user'))?.id;
+  const token = localStorage.getItem('authToken');
+  const navigate = useNavigate();
 
-  // function konsultasi() {
-  //   window.open(
-  //     "https://api.whatsapp.com/send?phone=6282336713898&text=Saya%20Mau%20Konsultasi%20Nih%20Kak"
-  //   );
-  //   console.log("test");
-  // }
+  if (!userId) {
+    return <p style={{ textAlign: "center" }}>Lakukan login terlebih dahulu.</p>;
+  }
 
   const handleInputChange = (index, event) => {
     const values = [...bahanList];
@@ -16,8 +25,18 @@ const FormResep = () => {
     setBahanList(values);
   };
 
+  const handleInputList = (index, event) => {
+    const values = [...instruksiList];
+    values[index] = event.target.value;
+    setInstruksi(values);
+  };
+
   const handleAddBahan = () => {
     setBahanList([...bahanList, ""]);
+  };
+
+  const handleAddInstruksi = () => {
+    setInstruksi([...instruksiList, ""]);
   };
 
   const handleRemoveBahan = (index) => {
@@ -26,41 +45,49 @@ const FormResep = () => {
     setBahanList(values);
   };
 
+  const handleRemoveList = (index) => {
+    const values = [...instruksiList];
+    values.splice(index, 1);
+    setInstruksi(values);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(token);
     try {
-      console.log("Data yang akan dikirim", bahanList);
-      // const response = await axios.post('/api/bahan', { bahan: bahanList });
+      const response = await axios.post('http://localhost:8888/resep/create', {
+        userId,
+        nama_resep,
+        deskripsi,
+        bahan: bahanList.join(', '), 
+        instruksi: instruksiList.join(', '),
+        kategori,
+        subkategori,
+        gambar,
+        video,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      console.log("Resep berhasil dibuat:", response.data);
+      navigate('/UploadResep');
     } catch (error) {
       console.error("Terjadi kesalahan saat mengirim data", error);
     }
   };
-  const [file, setFile] = useState();
-  function handleChange(e) {
-    console.log(e.target.files);
-    setFile(URL.createObjectURL(e.target.files[0]));
-  }
-  // ========================================================================
 
-  const [AddList, setAddlist] = useState([""]);
-
-  const handleInputList = (index, event) => {
-    const values = [...AddList];
-    values[index] = event.target.value;
-    setAddlist(values);
+  const handleImg = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setGambar(reader.result);
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
-
-  const handleAddList = () => {
-    setAddlist([...AddList, ""]);
-  };
-
-  const handleRemoveList = (index) => {
-    const values = [...AddList];
-    values.splice(index, 1);
-    setAddlist(values);
-  };
-
-  // ========================================================================
 
   return (
     <div className="bodyform">
@@ -95,12 +122,11 @@ const FormResep = () => {
             Masukan Semua jenis Bahan Resep Masakan Yang Ingin Kamu Buat
             Disini...
           </p>
-          {/* <img src="src/assets/img/image1.jpg" alt="image" /> */}
           <div className="container">
-            <img src={file} className="custom-image" />
+            {gambar && <img src={gambar} className="custom-image" alt="Resep Gambar" />}
             <div>
               <h4 className="text-add">Upload Resep Masakan Kamu :</h4>
-              <input className="setfile" type="file" onChange={handleChange} />
+              <input className="setfile" type="file" onChange={handleImg} />
             </div>
           </div>
         </div>
@@ -111,6 +137,8 @@ const FormResep = () => {
               type="text"
               className="form-control"
               placeholder="Masukan Nama Masakan Kamu"
+              value={nama_resep}
+              onChange={(e) => setNamaResep(e.target.value)}
             />
           </div>
           <div className="mb-3">
@@ -118,24 +146,39 @@ const FormResep = () => {
             <textarea
               className="form-control"
               placeholder="Tuliskan dengan singkat terkait masakan kamu"
+              value={deskripsi}
+              onChange={(e) => setDeskripsi(e.target.value)}
             ></textarea>
           </div>
-          {/* <button type="submit" className="btn btn-primary">
-            Submit
-
-          </button> */}
+          <div className="mb-3">
+            <label className="form-label">Kategori</label>
+            <textarea
+              className="form-control"
+              placeholder="Tuliskan dengan singkat terkait masakan kamu"
+              value={kategori}
+              onChange={(e) => setKategori(e.target.value)}
+            ></textarea>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">SubKategori</label>
+            <textarea
+              className="form-control"
+              placeholder="Tuliskan dengan singkat terkait masakan kamu"
+              value={subkategori}
+              onChange={(e) => setSubkategori(e.target.value)}
+            ></textarea>
+          </div>
           <div className="row align-items-center">
             <div className="column right">
               <label htmlFor="NamBahan"> Cara Memasak :</label> <br />
               <p className="textset-up fst-italic">
-                {" "}
                 (Tuliskan secara detail terkait tata cara memasak)
               </p>
-              {AddList.map((bahan, index) => (
+              {instruksiList.map((list, index) => (
                 <div className="bahanform" key={index}>
                   <input
                     type="text"
-                    value={bahan}
+                    value={list}
                     onChange={(event) => handleInputList(index, event)}
                     placeholder="Langkah-Langkah"
                   />
@@ -149,20 +192,16 @@ const FormResep = () => {
                   <button
                     className="btn-add"
                     type="button"
-                    onClick={handleAddList}
+                    onClick={handleAddInstruksi}
                   >
                     Add
                   </button>
-                  {/* <button type="button" onClick={konsultasi}>
-                Konsultasi
-              </button> */}
                 </div>
               ))}
             </div>
             <div className="column left">
               <label htmlFor="NamBahan"> Nama Bahan :</label> <br />
               <p className="textset-up fst-italic">
-                {" "}
                 (Masukan Semua Jenis Bahan Masakan kamu)
               </p>
               {bahanList.map((bahan, index) => (
@@ -187,20 +226,10 @@ const FormResep = () => {
                   >
                     Add
                   </button>
-                  {/* <button type="button" onClick={konsultasi}>
-                Konsultasi
-              </button> */}
                 </div>
               ))}
             </div>
           </div>
-          {/* <div className="mb-3">
-            <label className="caramasak">Cara Memasak :</label>
-            <textarea
-              className="form-control"
-              placeholder="Tuliskan secara detail terkait tata cara memasak"
-            ></textarea>
-          </div> */}
           <div className="mb-3">
             <label className="form-label">
               Masukan Url Video Turial Resep Masakan Kamu :
@@ -209,9 +238,11 @@ const FormResep = () => {
               type="text"
               className="form-control"
               placeholder="Masukan url video kamu"
+              value={video}
+              onChange={(e) => setVideo(e.target.value)}
             />
           </div>
-          <button type="button" className="simpanbutton">
+          <button type="submit" className="simpanbutton">
             Simpan Resep Mu
           </button>
         </form>
@@ -219,4 +250,8 @@ const FormResep = () => {
     </div>
   );
 };
+
 export default FormResep;
+
+
+          

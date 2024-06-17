@@ -4,8 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const RecipeDetail = () => {
-  const [resepData, setResepData] = useState(null);
-
+  const [resepData, setResepData] = useState({});
   const { id } = useParams();
 
   const getResep = async () => {
@@ -14,8 +13,7 @@ const RecipeDetail = () => {
       console.log(response.data);
       setResepData(response.data);
     } catch (error) {
-      console.error("Error fetching recipe data:", error);
-      setResepData(null); // Set to null to handle error state
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -29,7 +27,7 @@ const RecipeDetail = () => {
 
   return (
     <div className="recipe-detail-container">
-      <div className="recipe-header">{/* <h1 className="recipe-title">{resepData.nama_resep}</h1> */}</div>
+      
       <div className="recipe-content">
         <table>
           <tbody>
@@ -62,7 +60,11 @@ const RecipeDetail = () => {
               <td>
                 <div className="recipe-details">
                   <h2>Detail Bahan</h2>
-                  <ul>{resepData.bahan && resepData.bahan.split(",").map((ingredient, index) => <li key={index}>{ingredient}</li>)}</ul>
+                  <ul>
+                    {resepData.bahan?.split(', ').map((ingredient, index) => (
+                      <li key={index}>{ingredient}</li>
+                    ))}
+                  </ul>
                 </div>
               </td>
             </tr>
@@ -70,7 +72,11 @@ const RecipeDetail = () => {
               <td colSpan="2">
                 <div className="recipe-steps">
                   <h2>Langkah-langkah Pembuatan</h2>
-                  <ol>{resepData.instruksi && resepData.instruksi.split(",").map((step, index) => <li key={index}>{step}</li>)}</ol>
+                  <ol>
+                    {resepData.instruksi?.split(', ').map((step, index) => (
+                      <li key={index}>{step}</li>
+                    ))}
+                  </ol>
                 </div>
               </td>
             </tr>

@@ -14,11 +14,11 @@ const Login = () => {
         username,
         password,
       });
-      const { token, user } = response.data; // Assuming the response includes a user object
+      const { token, user } = response.data; 
       localStorage.setItem("authToken", token);
       localStorage.setItem("user", JSON.stringify(user));
       navigate("/Home");
-      window.location.reload(); // Refresh the page after navigation
+      window.location.reload(); 
     } catch (err) {
       setError("Login failed. Please check your credentials.");
     }
