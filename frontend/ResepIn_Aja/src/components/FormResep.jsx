@@ -51,6 +51,25 @@ const FormResep = () => {
     setInstruksi(values);
   };
 
+  const handleImg = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const response = await axios.post('http://localhost:8888/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      setGambar(response.data.url);
+      console.log("Gambar berhasil diunggah:", response.data.url);
+    } catch (error) {
+      console.error("Terjadi kesalahan saat mengunggah gambar", error);
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(token);
@@ -75,17 +94,6 @@ const FormResep = () => {
       navigate('/UploadResep');
     } catch (error) {
       console.error("Terjadi kesalahan saat mengirim data", error);
-    }
-  };
-
-  const handleImg = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setGambar(reader.result);
-    };
-    if (file) {
-      reader.readAsDataURL(file);
     }
   };
 
@@ -252,6 +260,3 @@ const FormResep = () => {
 };
 
 export default FormResep;
-
-
-          
