@@ -3,7 +3,7 @@ function uploadImage(req, res) {
   if (req.file.filename) {
     res.status(201).json({
       message: "Gambar berhasil di unggah!",
-      url: req.file.filename,
+      url: "http://127.0.0.1:8888/uploads/" + req.file.filename,
     });
   } else {
     res.status(500).json({
