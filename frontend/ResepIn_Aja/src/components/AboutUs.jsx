@@ -1,6 +1,7 @@
 /* eslint-disable no-const-assign */
 /* eslint-disable no-unused-vars */
 import { useNavigate } from "react-router-dom";
+import "../styles/aboutus.css"
 
 const AboutUs = () => {
   const Navigate = useNavigate();

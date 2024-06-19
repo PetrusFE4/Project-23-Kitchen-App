@@ -1,76 +1,98 @@
 .footer {
-    background-color: #343a40;
-    color: white;
-    padding-top: 20px;
-    position: relative;
-    margin-top: 10px;
-  }
-  
-  .footer a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .footer a:hover {
-    color: #ffc107;
-    text-decoration: none;
-  }
-  
-  .footer .col-md-4,
-  .footer .col-lg-3,
-  .footer .col-xl-3 {
-    margin-top: 20px;
-  }
-  .footer .col-md-4 {
-    padding-right: 10px;
-  }
-  
-  .footer .fab {
-    font-size: 20px;
-  }
-  
-  .footer .col-md-4 img {
-    align-items: center;
-    height: auto;
-  }
+  background-color: #343a40;
+  color: white;
+  padding-top: 0; /* Menghapus padding atas */
+  padding-bottom: 0; /* Menghapus padding bawah */
+}
 
-  
-  .footer h5 {
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-  }
-  
-  .footer h5::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 200px;
-    height: 2px;
-    background-color: #ffc107;
-  }
-  .Copyrigt {
-    font-weight: 300;
-    text-decoration: solid;
-    background-color: #ffc107;
-    width: auto;
-    height: 50px;
-    text-align: center;
-    align-items: center;
-    padding-top: 10px;
-  }
-  .Copyrigt p {
-    text-align: center;
-    align-items: center;
+/* Jika Anda ingin menghilangkan padding secara keseluruhan,
+   termasuk padding kiri dan kanan yang sebelumnya sudah 0 */
+.footer {
+  background-color: #343a40;
+  color: white;
+  padding: 0; /* Menghapus padding secara keseluruhan */
+}
 
+/* 
+.footer {
+  background-color: #343a40;
+  color: white;
+}
+*/
+.footer a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
 
-  }
-  .Copyrigt:hover{
-    color: #000000;
-    cursor: pointer;
-    text-align: center;
-    align-items: center;
-  }
+.footer a:hover {
+  color: #ffc107;
+  text-decoration: none;
+}
+
+.footer .col-md-4,
+.footer .col-lg-3,
+.footer .col-xl-3 {
+  margin-bottom: 0px; /* Mengubah margin-top menjadi margin-bottom */
+}
+
+.footer .fab {
+  font-size: 20px;
+}
+
+.footer .col-md-4 img {
+  max-width: 80%;
+  height: auto;
+}
+
+.footer h5 {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+  font-size: 18px; /* Menyesuaikan ukuran font */
+}
+
+.footer h5::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100px;
+  height: 2px;
+  background-color: #ffc107;
+}
+
+.Copyrigt {
+  background-color: #ffc107;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 12px; /* Menyesuaikan ukuran font */
+}
+
+.Copyrigt p {
+  margin-bottom: 0;
+}
+
+.Copyrigt:hover {
+  color: #000000;
+  cursor: pointer;
+}
+
+.small-text {
+  font-size: 12px; /* Menyesuaikan ukuran font */
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  margin-left: 300px; /* Memindahkan logo ke kanan */
+}
+
+.small-text {
+  font-size: 12px; /* Menyesuaikan ukuran font */
+  line-height: 1.5; /* Menyesuaikan jarak antar baris */
+  color: #c1bfbf; /* Menyesuaikan warna teks */
+  /* tambahkan properti CSS lain sesuai kebutuhan */
+}

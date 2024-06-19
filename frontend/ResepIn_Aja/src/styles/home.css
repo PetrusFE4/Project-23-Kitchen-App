@@ -16,8 +16,12 @@ body {
 
 .home-header h1 {
   font-size: 2.5em;
-  color: #f8b400;
+  /* color: #f8b400; */
   margin-bottom: 10px;
+  background: linear-gradient(to right, #ecc444, #fb9b65, #6d5fc1, #3f60b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .home-header p {
@@ -25,6 +29,28 @@ body {
   color: #555;
   margin-bottom: 20px;
 }
+
+/* .search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore-button {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #3F60B6, #6D5FC1, #FB9B65, #ECC444);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.explore-button span {
+  margin-right: 10px;
+} */
 
 .search-container {
   display: flex;
@@ -35,7 +61,7 @@ body {
 .explore-button {
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #3F60B6, #6D5FC1, #FB9B65, #ECC444);
+  background: linear-gradient(to right, #3f60b6, #6d5fc1, #fb9b65, #ecc444);
   border: none;
   border-radius: 50px;
   padding: 10px 20px;
@@ -69,6 +95,8 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
+  margin-left: 20px; /* Margin kiri yang sama */
+  margin-right: 20px; /* Margin kanan yang sama */
 }
 
 .recipe-section h3 {
@@ -156,7 +184,7 @@ body {
 }
 
 /* Body.css */
-.body-section {
+/* .body-section {
   background-color: #f8b400;
   width: 100%;
   height: auto;
@@ -176,6 +204,72 @@ body {
   height: 190px;
   border-radius: 8px;
   align-items: center;
+} */
+
+.body-section {
+  background-color: #f8b400;
+  width: auto;
+  height: auto;
+  justify-content: center;
+  display: flex;
+  padding-top: 20px;
+  margin: 60px; /* Margin yang sama */
+  border-radius: 10px;
+}
+
+.body-section h1 {
+  font-weight: bold;
+  align-items: center;
+}
+
+.food-images img {
+  width: 170px;
+  height: 190px;
+  border-radius: 8px;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.notepad-widget {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notepad-widget h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.notepad-widget textarea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+  resize: vertical;
+}
+
+.notepad-widget button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.notepad-widget button:hover {
+  background-color: #218838;
 }
 
 @media (max-width: 800px) {
@@ -211,11 +305,13 @@ body {
 }
 
 .section-info {
-  background-color: #3D447A;
+  background-color: #3d447a;
   height: auto;
   justify-content: center;
   display: flex;
-  margin-top: 20px;
+  margin : 60px;
+  border-radius: 10px;
+
 }
 
 .container {
@@ -247,7 +343,7 @@ body {
   color: #f8b400;
   padding-left: 50px;
   text-align: center;
-  font-family: 'Segoe UI';
+  font-family: "Segoe UI";
   font-weight: bold;
 }
 
@@ -275,4 +371,28 @@ body {
   background-color: #007bff;
   color: #fff;
   border-color: #007bff;
+}
+
+.recipe-card .details-button.fav-button {
+  background-color: red;
+  color: white;
+  margin-left: 25px;
+}
+
+.recipe-card .details-button.fav-button:hover {
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+}
+
+.explore-button a {
+  color: white;
+}
+
+.recipe-section .col h3 {
+  margin-left: 0;
+}
+
+.recipe-section .filter-button {
+  margin-right: 0;
 }
