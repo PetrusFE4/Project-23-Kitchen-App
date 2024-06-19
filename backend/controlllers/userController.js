@@ -89,7 +89,27 @@ function login(req, res) {
     });
 }
 
+function destroy(req, res) {
+  const userId = req.params;
+
+  models.user
+    .destroy({ where: { id: userId } })
+    .then((result) => {
+      res.status(200).json({
+        message: "user deleted",
+        user: result,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "something wrong!",
+      });
+    });
+}
+
+
 module.exports = {
   register: register,
   login: login,
+  destroy:destroy
 };

@@ -21,7 +21,8 @@ router.get("/daftarBelanja", daftarbelanjaController.getDaftar);//untuk nampilin
 router.post("/daftarBelanja/create", checkAuthMiddleware.checkAuth, daftarbelanjaController.create);//bikin daftar belanja pas pertama kali liat daftar belanja mungkin. json butuh userId sama optional content
 router.patch("/daftarBelanja/update", checkAuthMiddleware.checkAuth, daftarbelanjaController.update);//update daftar belanja pas user ngotak ngatik di textfield daftar belanja
 
-router.get('/user/:userId/favorites', favoriteController.getFavoritesByUser);//nampilin favorite suatu user
+router.get('/user/:userId/favorites', favoriteController.getFavoritesByUser);
+router.delete('/user/:userId/delete', userController.destroy);//nampilin favorite suatu user
 router.post('/user/favorites', checkAuthMiddleware.checkAuth, favoriteController.addRecipeToFavorites);//add suatu resep ke favorite user, jsonya butuh userId sama resepId
 router.delete('/user/favorites', checkAuthMiddleware.checkAuth, favoriteController.removeRecipeFromFavorites);//delet suatu resep dari favorite
 //router.post('/upload', checkAuthMiddleware.checkAuth, imageUploader.upload.single('image'), imageController.upload)
