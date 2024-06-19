@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import "../styles/updateresep.css";
 
-const FormResep = () => {
+
+const UpdateResep = () => {
   const [bahanList, setBahanList] = useState([""]);
   const [instruksiList, setInstruksi] = useState([""]);
   const [gambar, setGambar] = useState("");
@@ -11,9 +13,31 @@ const FormResep = () => {
   const [deskripsi, setDeskripsi] = useState("");
   const [subKategori, setSubkategori] = useState("");
   const [video, setVideo] = useState("");
+  const { id } = useParams();
   const userId = JSON.parse(localStorage.getItem('user'))?.id;
   const token = localStorage.getItem('authToken');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchRecipe = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8888/resep/${id}`);
+        const recipe = response.data;
+        setNamaResep(recipe.nama_resep);
+        setDeskripsi(recipe.deskripsi);
+        setKategori(recipe.kategori);
+        setSubkategori(recipe.subKategori);
+        setBahanList(recipe.bahan.split(', '));
+        setInstruksi(recipe.instruksi.split(', '));
+        setGambar(recipe.gambar);
+        setVideo(recipe.video);
+      } catch (error) {
+        console.error("Error fetching recipe:", error);
+      }
+    };
+
+    fetchRecipe();
+  }, [id]);
 
   if (!userId) {
     return <p style={{ textAlign: "center" }}>Lakukan login terlebih dahulu.</p>;
@@ -72,9 +96,8 @@ const FormResep = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(token);
     try {
-      const response = await axios.post('http://localhost:8888/resep/create', {
+      const response = await axios.patch(`http://localhost:8888/resep/${id}/update`, {
         userId,
         nama_resep,
         deskripsi,
@@ -90,7 +113,7 @@ const FormResep = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-      console.log("Resep berhasil dibuat:", response.data);
+      console.log("Resep berhasil diperbarui:", response.data);
       navigate('/UploadResep');
     } catch (error) {
       console.error("Terjadi kesalahan saat mengirim data", error);
@@ -125,7 +148,7 @@ const FormResep = () => {
       </section>
       <section className="form-set">
         <div className="form">
-          <h1 className="bagikan">Bagikan Resep Kamu</h1>
+          <h1 className="bagikan">Update Resep Kamu</h1>
           <p className="text-resep text-center">
             Masukan Semua jenis Bahan Resep Masakan Yang Ingin Kamu Buat
             Disini...
@@ -173,7 +196,7 @@ const FormResep = () => {
             <textarea
               className="form-control"
               placeholder="Tuliskan dengan singkat terkait masakan kamu"
-              value={subkategori}
+              value={subKategori}
               onChange={(e) => setSubkategori(e.target.value)}
             ></textarea>
           </div>
@@ -252,7 +275,7 @@ const FormResep = () => {
             />
           </div>
           <button type="submit" className="simpanbutton">
-            Simpan Resep Mu
+            Simpan Perubahan
           </button>
         </form>
       </section>
@@ -260,4 +283,4 @@ const FormResep = () => {
   );
 };
 
-export default FormResep;
+export default UpdateResep;

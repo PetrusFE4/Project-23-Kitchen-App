@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import '../styles/uploadresep.css';
 
 const UploadResep = () => {
   const [recipeData, setRecipeData] = useState([]);
   const navigate = useNavigate();
   const userId = JSON.parse(localStorage.getItem('user'))?.id; 
+  const token = localStorage.getItem('authToken');
 
   useEffect(() => {
-
     const fetchRecipes = async () => {
       try {
         const response = await fetch('http://localhost:8888/resep/');
         const data = await response.json();
-        // Filter resep berdasarkan userId
         const userRecipes = data.filter(recipe => recipe.userId === userId);
         setRecipeData(userRecipes);
       } catch (error) {
@@ -21,7 +22,20 @@ const UploadResep = () => {
     };
 
     fetchRecipes();
-  }, [userId, navigate]);
+  }, [userId]);
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8888/resep/${id}/delete`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      setRecipeData(recipeData.filter(recipe => recipe.id !== id));
+    } catch (error) {
+      console.error('Error deleting recipe:', error);
+    }
+  };
 
   if (!userId) {
     return <p>Please log in to see your favorite recipes.</p>;
@@ -50,9 +64,13 @@ const UploadResep = () => {
         <div className="recipe-grid">
           {recipeData.map((recipe, index) => (
             <div className="recipe-card" key={index}>
-              <img src={recipe.gambar} alt={recipe.nama_resep} />
+              <img src={recipe.gambar} alt={recipe.nama_resep} className="recipe-img" />
               <h3>{recipe.nama_resep}</h3>
               <p>{recipe.deskripsi}</p>
+              <div className="button-group">
+                <button onClick={() => navigate(`/UpdateResep/${recipe.id}`)} className="btn-edit">Edit</button>
+                <button onClick={() => handleDelete(recipe.id)} className="btn-delete">Delete</button>
+              </div>
             </div>
           ))}
         </div>

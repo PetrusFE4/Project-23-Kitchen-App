@@ -11,6 +11,8 @@ import Resep from "./components/Resep";
 import Kategori from "./components/Kategori";
 import FormResep from "./components/FormResep";
 import Favorites from "./components/Favorites";
+import UpdateResep from "./components/UpdateResep";
+
 
 // import Login from "./components/Login";
 //import Signup from "./components/Signup"
@@ -32,11 +34,13 @@ import "./styles/resep.css";
 import "./styles/Kategori.css";
 import "./styles/formresep.css";
 import "./styles/favorite.css";
+import "./styles/updateresep.css"
 
 const App = () => {
   return (
     <Router>
-      <div>
+      <div id="root">
+        <div className="main-content">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -51,9 +55,10 @@ const App = () => {
           <Route path="/Kategori" element={<Kategori />} />
           <Route path="/FormResep" element={<FormResep />} />
           <Route path="/Favorites" element={<Favorites />} />
-
+          <Route path="/UpdateResep/:id" element={<UpdateResep />} />
           {/* Tambahkan rute untuk RecipeDetail */}
         </Routes>
+        </div>
         <Footer />
       </div>
     </Router>
