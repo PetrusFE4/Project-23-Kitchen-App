@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -28,6 +29,29 @@ const Favorites = () => {
     }
   }, [user]);
 
+  const handleDeleteFav = async (resepId) => {
+    const confirmDelete = window.confirm("Apakah kamu yakin mau menghapus ini?");
+    if (!confirmDelete) {
+      return;
+    }
+
+    try {
+      await axios.delete(
+        `http://localhost:8888/user/favorites`,
+        {
+          data: { userId: user.id, resepId: resepId },
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("authToken"),
+          },
+        }
+      );
+      // Hapus favorit dari state setelah sukses menghapus dari database
+      setFavorites(favorites.filter((fav) => fav.resep.id !== resepId));
+    } catch (error) {
+      console.error("Error deleting favorite:", error);
+    }
+  };
+
   if (!user) {
     return <p>Please log in to see your favorite recipes.</p>;
   }
@@ -43,6 +67,12 @@ const Favorites = () => {
             <Link to={`/recipe/${fav.resep.id}`} className="details-button">
               More details
             </Link>
+            <button
+              className="delete-button"
+              onClick={() => handleDeleteFav(fav.resep.id)}
+            >
+              <FaRegTrashCan />
+            </button>
           </div>
         ))}
       </div>

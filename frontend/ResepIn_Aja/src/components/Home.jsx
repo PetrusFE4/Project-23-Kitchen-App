@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { FaHeart } from "react-icons/fa"; // Menggunakan "react-icons/fa" untuk FontAwesome
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const Home = () => {
   const [resepData, setResepData] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [favMessage, setFavMessage] = useState(""); // State untuk pesan favorit
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -17,9 +20,12 @@ const Home = () => {
   }, []);
 
   const getResep = async () => {
-    const resep = await axios.get("http://localhost:8888/resep");
-    console.log(resep.data);
-    setResepData(resep.data);
+    try {
+      const response = await axios.get("http://localhost:8888/resep");
+      setResepData(response.data);
+    } catch (error) {
+      console.error("Error fetching resep:", error);
+    }
   };
 
   useEffect(() => {
@@ -32,18 +38,24 @@ const Home = () => {
       return;
     }
 
-    await axios.post(
-      "http://localhost:8888/user/favorites",
-      {
-        userId: userId,
-        resepId: resepId,
-      },
-      {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("authToken"),
+    try {
+      await axios.post(
+        "http://localhost:8888/user/favorites",
+        {
+          userId: userId,
+          resepId: resepId,
         },
-      }
-    );
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("authToken"),
+          },
+        }
+      );
+
+    } catch (error) {
+      console.error("Gagal menambahkan ke favorit:", error);
+      alert("Favorit telah ditambahkan.");
+    }
   };
 
   return (
@@ -53,11 +65,12 @@ const Home = () => {
         <p>
           Inilah tempatnya segala resep masakan enak! ResepIn Aja telah sajikan
           <br />
-          beragam hidangan semi bergaya rumahan, tepat sebagai masakan
-          sehari-hari.
+          beragam hidangan semi bergaya rumahan, tepat sebagai masakan sehari-hari.
         </p>
         <div className="search-container">
-          <button className="explore-button">Explore Resep Makanan</button>
+          <button className="explore-button">
+            <a href="http://localhost:5173/Resep">Explore Resep Makanan <FaMagnifyingGlass /></a>
+          </button>
         </div>
       </header>
       <section className="recipe-section">
@@ -81,9 +94,10 @@ const Home = () => {
               <Link to={`/recipe/${resep.id}`} className="details-button">
                 More details
               </Link>
-              <button className="details-button" onClick={() => handleFav(resep.id)}>
-                fav
+              <button className="details-button fav-button" onClick={() => handleFav(resep.id)}>
+                <FaHeart /> {/* Menggunakan FaHeart dari react-icons */}
               </button>
+              {favMessage && <p>{favMessage}</p>}
             </div>
           ))}
         </div>
@@ -93,32 +107,14 @@ const Home = () => {
         <div className="container py-4">
           <div className="row align-items-center p-3">
             <div className="col-md-6 text-center text-md-left">
-              <h1 className="display-5">
-                MASIH BINGUNG MAU MASAK APA HARI INI?
-              </h1>
+              <h1 className="display-5">MASIH BINGUNG MAU MASAK APA HARI INI?</h1>
             </div>
             <div className="col-md-6 d-flex justify-content-center">
               <div className="food-images d-flex">
-                <img
-                  src="/src/assets/img/image1.jpg"
-                  alt="Ayam Goreng"
-                  className="img-fluid mx-1"
-                />
-                <img
-                  src="/src/assets/img/image1.jpg"
-                  alt="Makanan 1"
-                  className="img-fluid mx-1"
-                />
-                <img
-                  src="/src/assets/img/image1.jpg"
-                  alt="Makanan 2"
-                  className="img-fluid mx-1"
-                />
-                <img
-                  src="/src/assets/img/image1.jpg"
-                  alt="Makanan 3"
-                  className="img-fluid mx-1"
-                />
+                <img src="/src/assets/img/image1.jpg" alt="Ayam Goreng" className="img-fluid mx-1" />
+                <img src="/src/assets/img/image1.jpg" alt="Makanan 1" className="img-fluid mx-1" />
+                <img src="/src/assets/img/image1.jpg" alt="Makanan 2" className="img-fluid mx-1" />
+                <img src="/src/assets/img/image1.jpg" alt="Makanan 3" className="img-fluid mx-1" />
               </div>
             </div>
           </div>
@@ -130,13 +126,8 @@ const Home = () => {
             <div className="row align-items-center justify-content-center p-3 rounded ">
               <div className="col-md-6 d-flex align-items-center justify-content-center">
                 <h6>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Nobis recusandae quisquam sed sint id, possimus nihil modi
-                  voluptatibus provident a voluptatem quos cumque et quas quis,
-                  deleniti odit iste ipsa? ipsum dolor sit amet consectetur
-                  adipisicing elit. Nobis recusandae quisquam sed sint id,
-                  possimus nihil modi voluptatibus provident a voluptatem quos
-                  cumque et quas quis, deleniti odit iste ipsa?
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis recusandae quisquam sed sint id, possimus nihil modi voluptatibus provident a voluptatem quos cumque et quas quis, deleniti odit iste ipsa? ipsum dolor sit
+                  amet consectetur adipisicing elit. Nobis recusandae quisquam sed sint id, possimus nihil modi voluptatibus provident a voluptatem quos cumque et quas quis, deleniti odit iste ipsa?
                 </h6>
               </div>
               <div className="col-3">
@@ -148,11 +139,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="col-3 mt-20">
-                <img
-                  src="/src/assets/img/photo1.png"
-                  alt="Girl thinking"
-                  className="photos"
-                />
+                <img src="/src/assets/img/photo1.png" alt="Girl thinking" className="photos" />
               </div>
             </div>
           </div>

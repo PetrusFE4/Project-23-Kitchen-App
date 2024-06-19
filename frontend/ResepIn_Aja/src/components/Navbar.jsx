@@ -1,18 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Logo from "../assets/Logo.png";
-// import "./Navbar.css"; // Pastikan file CSS sudah diimpor
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState(null);
   const [role, setRole] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token) {
       const user = JSON.parse(localStorage.getItem("user"));
-      if (user) { // Tambahkan pengecekan untuk memastikan user ada
+      if (user) {
+        // Tambahkan pengecekan untuk memastikan user ada
         setUsername(user.username);
         setRole(user.role);
       }
@@ -28,13 +29,20 @@ const Navbar = () => {
     window.location.reload();
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-logo" onClick={() => navigate("/Home")}>
         <img src={Logo} alt="ResepIn Aja Logo" />
         <span>ResepIn Aja</span>
       </div>
-      <ul className="navbar-links">
+      <div className="menu-icon" onClick={toggleMenu}>
+        ☰
+      </div>
+      <ul className={`navbar-links ${menuOpen ? "active" : ""}`}>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -53,26 +61,29 @@ const Navbar = () => {
         <li>
           <Link to="/Favorites">Favorites</Link>
         </li>
-      </ul>
-      <div className="navbar-auth">
-        {username ? (
+        {!username && (
           <>
-            <span>Welcome, {username}</span>
-            <button className="logout-button" onClick={handleLogout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <button className="login-button" onClick={() => navigate("/Login")}>
-              Login
-            </button>
-            <button className="signup-button" onClick={() => navigate("/Signup")}>
-              Sign Up
-            </button>
+            <li>
+              <button className="login-button" onClick={() => navigate("/Login")}>
+                Login
+              </button>
+            </li>
+            <li>
+              <button className="signup-button" onClick={() => navigate("/Signup")}>
+                Sign Up
+              </button>
+            </li>
           </>
         )}
-      </div>
+      </ul>
+      {username && (
+        <div className={`navbar-auth ${menuOpen ? "active" : ""}`}>
+          <span>Welcome, {username}</span>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      )}
     </nav>
   );
 };
