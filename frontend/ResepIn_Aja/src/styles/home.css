@@ -309,9 +309,8 @@ body {
   height: auto;
   justify-content: center;
   display: flex;
-  margin : 60px;
+  margin: 60px;
   border-radius: 10px;
-
 }
 
 .container {
@@ -396,7 +395,6 @@ body {
 .recipe-section .filter-button {
   margin-right: 0;
 }
-
 
 /* Pop-Up Styles */
 .popup-overlay {

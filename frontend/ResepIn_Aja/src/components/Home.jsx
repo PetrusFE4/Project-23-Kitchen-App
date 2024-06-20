@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { FaHeart } from 'react-icons/fa'; // Menggunakan "react-icons/fa" untuk FontAwesome
-import { FaMagnifyingGlass } from 'react-icons/fa6';
-// import './Home.css'; // Import CSS
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { FaHeart } from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const Home = () => {
   const [resepData, setResepData] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
-  const [favMessage, setFavMessage] = useState(""); // State untuk pesan favorit
-  const [showPopup, setShowPopup] = useState(false); // State untuk menampilkan pop-up
+  const [favMessage, setFavMessage] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -61,7 +60,6 @@ const Home = () => {
       setTimeout(() => {
         setShowPopup(false);
       }, 3000);
-
     } catch (error) {
       console.error("Gagal menambahkan ke favorit:", error);
       setFavMessage("Gagal menambahkan ke favorit.");
@@ -80,7 +78,9 @@ const Home = () => {
         </p>
         <div className="search-container">
           <button className="explore-button">
-            <a href="http://localhost:5173/Resep">Explore Resep Makanan <FaMagnifyingGlass /></a>
+            <a href="http://localhost:5173/Resep">
+              Explore Resep Makanan <FaMagnifyingGlass />
+            </a>
           </button>
         </div>
       </header>
@@ -106,7 +106,7 @@ const Home = () => {
                 More details
               </Link>
               <button className="details-button fav-button" onClick={() => handleFav(resep.id)}>
-                <FaHeart /> {/* Menggunakan FaHeart dari react-icons */}
+                <FaHeart />
               </button>
             </div>
           ))}
@@ -114,7 +114,7 @@ const Home = () => {
       </div>
 
       {showPopup && (
-        <div className={`popup-overlay ${showPopup ? 'active' : ''}`}>
+        <div className={`popup-overlay ${showPopup ? "active" : ""}`}>
           <div className="popup">
             <h2>Alert</h2>
             <p>{favMessage}</p>
@@ -159,7 +159,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="col-3 mt-20">
-                <img src="/src/assets/img/image1.jpg" alt="ayam goreng" className="img-fluid mx-1 rounded" />
+                <img src="/src/assets/img/photo1.png" alt="ayam goreng" className="img-fluid mx-1 rounded" />
               </div>
             </div>
           </div>

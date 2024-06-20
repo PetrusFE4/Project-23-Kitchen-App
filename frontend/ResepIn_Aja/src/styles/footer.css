@@ -1,12 +1,13 @@
-html, body {
-  height: 100%;
+html,
+body {
+  height: 80%;
   margin: 0;
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .main-content {
@@ -16,8 +17,6 @@ html, body {
 .footer {
   background-color: #343a40;
   color: white;
-  padding-top: 0; /* Menghapus padding atas */
-  padding-bottom: 0; /* Menghapus padding bawah */
 }
 
 /* Jika Anda ingin menghilangkan padding secara keseluruhan,
@@ -37,7 +36,7 @@ html, body {
 .footer a {
   color: white;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .footer a:hover {
@@ -104,10 +103,20 @@ html, body {
   height: auto;
   margin-left: 300px; /* Memindahkan logo ke kanan */
 }
+.textspanset {
+  font-weight: bold;
+  font-family: serif;
+  font-size: 40px;
+  padding-left: 20px;
+}
 
 .small-text {
-  font-size: 12px; /* Menyesuaikan ukuran font */
+  font-size: 20px; /* Menyesuaikan ukuran font */
   line-height: 1.5; /* Menyesuaikan jarak antar baris */
   color: #c1bfbf; /* Menyesuaikan warna teks */
   /* tambahkan properti CSS lain sesuai kebutuhan */
+}
+.img-fluid {
+  width: 20%;
+  height: auto;
 }
