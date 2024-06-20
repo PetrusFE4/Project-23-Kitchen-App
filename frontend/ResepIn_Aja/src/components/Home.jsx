@@ -1,14 +1,16 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { FaHeart } from "react-icons/fa"; // Menggunakan "react-icons/fa" untuk FontAwesome
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { FaHeart } from 'react-icons/fa'; // Menggunakan "react-icons/fa" untuk FontAwesome
+import { FaMagnifyingGlass } from 'react-icons/fa6';
+// import './Home.css'; // Import CSS
 
 const Home = () => {
   const [resepData, setResepData] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
   const [favMessage, setFavMessage] = useState(""); // State untuk pesan favorit
+  const [showPopup, setShowPopup] = useState(false); // State untuk menampilkan pop-up
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -34,7 +36,8 @@ const Home = () => {
 
   const handleFav = async (resepId) => {
     if (!isAuthenticated) {
-      alert("Please login to favorite a recipe");
+      setFavMessage("Please login to favorite a recipe");
+      setShowPopup(true);
       return;
     }
 
@@ -52,9 +55,17 @@ const Home = () => {
         }
       );
 
+      setFavMessage("Resep berhasil ditambahkan ke favorit!");
+      setShowPopup(true);
+
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
+
     } catch (error) {
       console.error("Gagal menambahkan ke favorit:", error);
-      alert("Favorit telah ditambahkan.");
+      setFavMessage("Gagal menambahkan ke favorit.");
+      setShowPopup(true);
     }
   };
 
@@ -97,11 +108,20 @@ const Home = () => {
               <button className="details-button fav-button" onClick={() => handleFav(resep.id)}>
                 <FaHeart /> {/* Menggunakan FaHeart dari react-icons */}
               </button>
-              {favMessage && <p>{favMessage}</p>}
             </div>
           ))}
         </div>
       </div>
+
+      {showPopup && (
+        <div className={`popup-overlay ${showPopup ? 'active' : ''}`}>
+          <div className="popup">
+            <h2>Alert</h2>
+            <p>{favMessage}</p>
+            <button onClick={() => setShowPopup(false)}>Tutup</button>
+          </div>
+        </div>
+      )}
 
       <section className="body-section">
         <div className="container py-4">
@@ -139,7 +159,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="col-3 mt-20">
-                <img src="/src/assets/img/photo1.png" alt="Girl thinking" className="photos" />
+                <img src="/src/assets/img/image1.jpg" alt="ayam goreng" className="img-fluid mx-1 rounded" />
               </div>
             </div>
           </div>

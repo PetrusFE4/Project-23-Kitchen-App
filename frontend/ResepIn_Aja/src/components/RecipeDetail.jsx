@@ -27,7 +27,6 @@ const RecipeDetail = () => {
 
   return (
     <div className="recipe-detail-container">
-      
       <div className="recipe-content">
         <table>
           <tbody>
@@ -51,17 +50,17 @@ const RecipeDetail = () => {
               </td>
             </tr>
             <tr>
-              <td>
+              <td className="text-cell">
                 <div className="recipe-description">
                   <h2>{resepData.nama_resep}</h2>
                   <p>{resepData.deskripsi}</p>
                 </div>
               </td>
-              <td>
+              <td className="text-cell">
                 <div className="recipe-details">
                   <h2>Detail Bahan</h2>
                   <ul>
-                    {resepData.bahan?.split(', ').map((ingredient, index) => (
+                    {resepData.bahan?.split(", ").map((ingredient, index) => (
                       <li key={index}>{ingredient}</li>
                     ))}
                   </ul>
@@ -69,11 +68,11 @@ const RecipeDetail = () => {
               </td>
             </tr>
             <tr>
-              <td colSpan="2">
+              <td className="text-cell" colSpan="2">
                 <div className="recipe-steps">
                   <h2>Langkah-langkah Pembuatan</h2>
                   <ol>
-                    {resepData.instruksi?.split(', ').map((step, index) => (
+                    {resepData.instruksi?.split(", ").map((step, index) => (
                       <li key={index}>{step}</li>
                     ))}
                   </ol>

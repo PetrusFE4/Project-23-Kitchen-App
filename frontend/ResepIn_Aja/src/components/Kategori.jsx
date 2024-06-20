@@ -36,11 +36,7 @@ const Kategori = () => {
   return (
     <div className="category-container">
       {uniqueCategories.map((category) => (
-        <div
-          key={category.kategori}
-          className="category-card"
-          onClick={() => handleCategoryClick(category.kategori)}
-        >
+        <div key={category.kategori} className="category-card" onClick={() => handleCategoryClick(category.kategori)}>
           <img src={category.gambar} alt={category.kategori} />
           <h3>{category.kategori}</h3>
         </div>

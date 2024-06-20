@@ -1,24 +1,104 @@
 .textfav {
-    text-align: center;
-    padding-top: 20px;
-    font-family: sans-serif;
-    font-weight: bold;
+  text-align: center;
+  padding-top: 20px;
+  font-family: sans-serif;
+  font-weight: bold;
 }
-.recipe-gird {
-    padding-top: 20px;
+
+.recipe-grid {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .delete-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 10px;
-    border-radius: 3px;
-  }
-  
-  .delete-button:hover {
-    background-color: darkred;
-  }
-  
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 30px;
+  border-radius: 3px;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+/* Pop-Up Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+.popup h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.popup p {
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.popup button {
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.popup .confirm-button {
+  background-color: #ebb216;
+}
+
+.popup .confirm-button:hover {
+  background-color: #1dec4d; /* Warna hijau saat dihover */
+}
+
+.popup .cancel-button {
+  background-color: #ebb216;
+}
+
+.popup .cancel-button:hover {
+  background-color: #f42136; /* Warna merah saat dihover */
+}
+
+.popup .ok-button {
+  background-color: #007bff;
+}
+
+.popup .ok-button:hover {
+  background-color: #0056b3;
+}

@@ -69,10 +69,10 @@ const Resep = () => {
       </section>
 
       <div className="container">
-        <div className="resep row">
+        <div className="resep row justify-content-center">
           {filterResep.map((resep) => (
-            <div className="col-md-3 mb-4" key={resep.id}>
-              <div className="card">
+            <div className="col-md-3 mb-4 d-flex" key={resep.id}>
+              <div className="card flex-fill">
                 <img
                   src={resep.gambar}
                   className="card-img-top"

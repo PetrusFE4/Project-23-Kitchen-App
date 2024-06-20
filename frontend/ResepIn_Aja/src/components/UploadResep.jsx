@@ -5,6 +5,8 @@ import '../styles/uploadresep.css';
 
 const UploadResep = () => {
   const [recipeData, setRecipeData] = useState([]);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [deleteRecipeId, setDeleteRecipeId] = useState(null);
   const navigate = useNavigate();
   const userId = JSON.parse(localStorage.getItem('user'))?.id; 
   const token = localStorage.getItem('authToken');
@@ -24,17 +26,29 @@ const UploadResep = () => {
     fetchRecipes();
   }, [userId]);
 
-  const handleDelete = async (id) => {
+  const showDeleteConfirmPopup = (id) => {
+    setDeleteRecipeId(id);
+    setShowConfirm(true);
+  };
+
+  const handleDeleteConfirm = async () => {
     try {
-      await axios.delete(`http://localhost:8888/resep/${id}/delete`, {
+      await axios.delete(`http://localhost:8888/resep/${deleteRecipeId}/delete`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
-      setRecipeData(recipeData.filter(recipe => recipe.id !== id));
+      setRecipeData(recipeData.filter(recipe => recipe.id !== deleteRecipeId));
+      setShowConfirm(false);
+      setDeleteRecipeId(null);
     } catch (error) {
       console.error('Error deleting recipe:', error);
     }
+  };
+
+  const closePopup = () => {
+    setShowConfirm(false);
+    setDeleteRecipeId(null);
   };
 
   if (!userId) {
@@ -69,12 +83,24 @@ const UploadResep = () => {
               <p>{recipe.deskripsi}</p>
               <div className="button-group">
                 <button onClick={() => navigate(`/UpdateResep/${recipe.id}`)} className="btn-edit">Edit</button>
-                <button onClick={() => handleDelete(recipe.id)} className="btn-delete">Delete</button>
+                <button onClick={() => showDeleteConfirmPopup(recipe.id)} className="btn-delete">Delete</button>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {showConfirm && (
+        <div className="popup-container">
+          <div className="popup-message">
+            <p>Apakah kamu yakin mau menghapus ini?</p>
+            <div className="confirm-buttons">
+              <button onClick={handleDeleteConfirm}>Ya</button>
+              <button onClick={closePopup}>Tidak</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
