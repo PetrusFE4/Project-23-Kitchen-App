@@ -1,0 +1,48 @@
+/* src/css/admin-css/productmanagement.css */
+.product-management {
+  padding: 20px;
+}
+
+.product-management h2 {
+  margin-bottom: 20px;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.product-table th {
+  background-color: #f2f2f2;
+}
+
+.product-table td {
+  background-color: #fff;
+}
+
+.edit-btn,
+.delete-btn {
+  margin-right: 5px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.delete-btn {
+  background-color: #f44336;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  opacity: 0.8;
+}

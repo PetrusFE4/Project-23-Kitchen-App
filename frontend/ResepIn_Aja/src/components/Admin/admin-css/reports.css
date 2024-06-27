@@ -1,0 +1,28 @@
+/* src/css/admin-css/reports.css */
+.reports {
+  padding: 20px;
+}
+
+.reports h2 {
+  margin-bottom: 20px;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.report-table th,
+.report-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.report-table th {
+  background-color: #f2f2f2;
+}
+
+.report-table td {
+  background-color: #fff;
+}

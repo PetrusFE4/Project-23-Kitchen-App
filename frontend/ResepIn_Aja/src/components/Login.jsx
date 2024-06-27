@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -14,11 +16,16 @@ const Login = () => {
         username,
         password,
       });
-      const { token, user } = response.data; 
+      const { token, user } = response.data;
       localStorage.setItem("authToken", token);
       localStorage.setItem("user", JSON.stringify(user));
-      navigate("/Home");
-      window.location.reload(); 
+
+      if (user.id === 1) {
+        navigate("/AdminDashboard");
+      } else {
+        navigate("/Home");
+      }
+      window.location.reload();
     } catch (err) {
       setError("Login failed. Please check your credentials.");
     }
@@ -57,7 +64,6 @@ const Login = () => {
               Pusat Informasi Seputar Masakan Untuk Kamu.
             </small>
           </div>
-
           <div className="col-md-6 right-box">
             <div className="row align-items-center">
               <div className="header-text mb-4">

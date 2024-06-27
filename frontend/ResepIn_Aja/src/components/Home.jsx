@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { FaHeart } from 'react-icons/fa'; // Menggunakan "react-icons/fa" untuk FontAwesome
-import { FaMagnifyingGlass } from 'react-icons/fa6';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { FaHeart } from "react-icons/fa"; // Menggunakan "react-icons/fa" untuk FontAwesome
+import { FaMagnifyingGlass } from "react-icons/fa6";
 // import './Home.css'; // Import CSS
 
 const Home = () => {
   const [resepData, setResepData] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [favMessage, setFavMessage] = useState(""); // State untuk pesan favorit
   const [showPopup, setShowPopup] = useState(false); // State untuk menampilkan pop-up
 
@@ -54,14 +55,6 @@ const Home = () => {
           },
         }
       );
-
-      setFavMessage("Resep berhasil ditambahkan ke favorit!");
-      setShowPopup(true);
-
-      setTimeout(() => {
-        setShowPopup(false);
-      }, 3000);
-
     } catch (error) {
       console.error("Gagal menambahkan ke favorit:", error);
       setFavMessage("Gagal menambahkan ke favorit.");
@@ -76,11 +69,14 @@ const Home = () => {
         <p>
           Inilah tempatnya segala resep masakan enak! ResepIn Aja telah sajikan
           <br />
-          beragam hidangan semi bergaya rumahan, tepat sebagai masakan sehari-hari.
+          beragam hidangan semi bergaya rumahan, tepat sebagai masakan
+          sehari-hari.
         </p>
         <div className="search-container">
           <button className="explore-button">
-            <a href="http://localhost:5173/Resep">Explore Resep Makanan <FaMagnifyingGlass /></a>
+            <a href="http://localhost:5173/Resep">
+              Explore Resep Makanan <FaMagnifyingGlass />
+            </a>
           </button>
         </div>
       </header>
@@ -105,7 +101,10 @@ const Home = () => {
               <Link to={`/recipe/${resep.id}`} className="details-button">
                 More details
               </Link>
-              <button className="details-button fav-button" onClick={() => handleFav(resep.id)}>
+              <button
+                className="details-button fav-button"
+                onClick={() => handleFav(resep.id)}
+              >
                 <FaHeart /> {/* Menggunakan FaHeart dari react-icons */}
               </button>
             </div>
@@ -114,7 +113,7 @@ const Home = () => {
       </div>
 
       {showPopup && (
-        <div className={`popup-overlay ${showPopup ? 'active' : ''}`}>
+        <div className={`popup-overlay ${showPopup ? "active" : ""}`}>
           <div className="popup">
             <h2>Alert</h2>
             <p>{favMessage}</p>
@@ -127,14 +126,32 @@ const Home = () => {
         <div className="container py-4">
           <div className="row align-items-center p-3">
             <div className="col-md-6 text-center text-md-left">
-              <h1 className="display-5">MASIH BINGUNG MAU MASAK APA HARI INI?</h1>
+              <h1 className="display-5">
+                MASIH BINGUNG MAU MASAK APA HARI INI?
+              </h1>
             </div>
             <div className="col-md-6 d-flex justify-content-center">
               <div className="food-images d-flex">
-                <img src="/src/assets/img/image1.jpg" alt="Ayam Goreng" className="img-fluid mx-1" />
-                <img src="/src/assets/img/image1.jpg" alt="Makanan 1" className="img-fluid mx-1" />
-                <img src="/src/assets/img/image1.jpg" alt="Makanan 2" className="img-fluid mx-1" />
-                <img src="/src/assets/img/image1.jpg" alt="Makanan 3" className="img-fluid mx-1" />
+                <img
+                  src="/src/assets/img/image1.jpg"
+                  alt="Ayam Goreng"
+                  className="img-fluid mx-1"
+                />
+                <img
+                  src="/src/assets/img/image1.jpg"
+                  alt="Makanan 1"
+                  className="img-fluid mx-1"
+                />
+                <img
+                  src="/src/assets/img/image1.jpg"
+                  alt="Makanan 2"
+                  className="img-fluid mx-1"
+                />
+                <img
+                  src="/src/assets/img/image1.jpg"
+                  alt="Makanan 3"
+                  className="img-fluid mx-1"
+                />
               </div>
             </div>
           </div>
@@ -146,8 +163,13 @@ const Home = () => {
             <div className="row align-items-center justify-content-center p-3 rounded ">
               <div className="col-md-6 d-flex align-items-center justify-content-center">
                 <h6>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis recusandae quisquam sed sint id, possimus nihil modi voluptatibus provident a voluptatem quos cumque et quas quis, deleniti odit iste ipsa? ipsum dolor sit
-                  amet consectetur adipisicing elit. Nobis recusandae quisquam sed sint id, possimus nihil modi voluptatibus provident a voluptatem quos cumque et quas quis, deleniti odit iste ipsa?
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Nobis recusandae quisquam sed sint id, possimus nihil modi
+                  voluptatibus provident a voluptatem quos cumque et quas quis,
+                  deleniti odit iste ipsa? ipsum dolor sit amet consectetur
+                  adipisicing elit. Nobis recusandae quisquam sed sint id,
+                  possimus nihil modi voluptatibus provident a voluptatem quos
+                  cumque et quas quis, deleniti odit iste ipsa?
                 </h6>
               </div>
               <div className="col-3">
@@ -159,7 +181,11 @@ const Home = () => {
                 </div>
               </div>
               <div className="col-3 mt-20">
-                <img src="/src/assets/img/image1.jpg" alt="ayam goreng" className="img-fluid mx-1 rounded" />
+                <img
+                  src="/src/assets/img/photo1.png"
+                  alt="Girl thinking"
+                  className="photos"
+                />
               </div>
             </div>
           </div>
