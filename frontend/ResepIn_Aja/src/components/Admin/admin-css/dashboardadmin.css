@@ -1,0 +1,71 @@
+/* Container utama */
+.admin-dashboard {
+  padding: 20px;
+  background-color: #f8f8f8; /* Warna latar belakang */
+  min-height: 100vh; /* Tinggi minimum untuk memenuhi layar */
+}
+
+/* Header dashboard */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+}
+
+.dashboard-links {
+  display: flex;
+  gap: 10px;
+}
+
+.dashboard-links button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #343a40;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-links button:hover {
+  background-color: #555;
+}
+
+/* Dashboard cards */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.dashboard-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.dashboard-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.dashboard-card p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Konten dashboard */
+.dashboard-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

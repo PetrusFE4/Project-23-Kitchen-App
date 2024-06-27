@@ -1,0 +1,72 @@
+.category-management {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.category-management h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.add-category {
+  margin-bottom: 15px;
+}
+
+.add-category input[type="text"] {
+  padding: 8px;
+  width: 200px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.add-category button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.add-category button:hover {
+  background-color: #0056b3;
+}
+
+.category-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.category-table th,
+.category-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.category-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.category-table td input[type="text"] {
+  padding: 5px;
+  width: 150px;
+}
+
+.category-table td button {
+  padding: 5px 8px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.category-table td button:hover {
+  background-color: #218838;
+}
